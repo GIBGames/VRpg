@@ -4,7 +4,7 @@
 # GIB Games Presents: VRpg framework
 A system for creating RPG systems in VRChat.
 
-** See an example of this script in action: [Vampire the Masquerade - Dark Skylines](https://vrchat.com/home/world/wrld_e7396f79-da8f-4e3c-af72-9a2e5aa70319) on VRChat!**
+**See an example of this script in action: [Vampire the Masquerade - Dark Skylines](https://vrchat.com/home/world/wrld_e7396f79-da8f-4e3c-af72-9a2e5aa70319) on VRChat!**
 
 ## Requirements
 
