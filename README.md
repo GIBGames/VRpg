@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![GitHub followers](https://img.shields.io/github/followers/GIBGames?style=social) ![Twitter Follow](https://img.shields.io/twitter/follow/gibgames?style=social) ![Discord](https://img.shields.io/discord/539176606468669440)
+![GitHub followers](https://img.shields.io/github/followers/GIBGames?style=social) [![Twitter Follow](https://img.shields.io/twitter/follow/gibgames?style=social)](https://twitter.com/GibGames) [![Discord](https://img.shields.io/discord/539176606468669440?label=discord)](https://discord.gg/jvZkahu)
 
 # GIB Games Presents: VRpg framework
 A system for creating RPG systems in VRChat.
