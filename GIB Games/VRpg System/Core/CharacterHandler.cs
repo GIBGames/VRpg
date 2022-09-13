@@ -225,5 +225,11 @@ namespace GIB.VRpg
         {
             _LarpLog.AddToLog(toLog);
         }
+
+        public void CallST()
+        {
+            if (LocalPoolObject.isStoryteller)
+                alertObject.Play();
+        }
     }
 }

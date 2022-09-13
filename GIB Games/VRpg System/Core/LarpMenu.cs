@@ -73,7 +73,7 @@ namespace GIB.VRpg
             ShowPanel(3);
         }
 
-        public void ShowST()
+        public void ShowSocial()
         {
             stFunctions.SetActive(characterHandler.LocalPoolObject.isStoryteller);
             ShowPanel(4);
