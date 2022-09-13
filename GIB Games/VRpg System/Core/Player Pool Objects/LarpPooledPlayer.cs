@@ -55,7 +55,7 @@ namespace GIB.VRpg
         public CharacterHandler GetCharacterHandler()
         {
             if (characterHandler == null)
-                characterHandler = GameObject.Find("CharacterHandler").GetComponent<CharacterHandler>();
+                characterHandler = GameObject.Find("VRPG Character Handler").GetComponent<CharacterHandler>();
 
             return characterHandler;
         }
@@ -140,7 +140,7 @@ namespace GIB.VRpg
             transform.position = pos + Vector3.up * .75f;
 
             Vector3 locPos = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).position;
-            transform.LookAt(locPos);
+            transform.GetChild(0).LookAt(locPos);
 
             mapDot.transform.parent.position = pos + Vector3.down * 20f;
         }

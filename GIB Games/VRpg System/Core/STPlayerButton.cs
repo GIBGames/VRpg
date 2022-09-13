@@ -20,13 +20,17 @@ namespace GIB.VRpg
 
         public void NoCharacter()
         {
-            thisButton.GetComponentInChildren<Text>().text = "";
+            if (thisButton == null)
+                thisButton = GetComponent<Button>();
+            gameObject.GetComponentInChildren<Text>().text = "";
             targetPlayer = null;
             thisButton.interactable = false;
         }
 
         public void AssignCharacter(LarpPooledPlayer target)
         {
+            if (thisButton == null)
+                thisButton = GetComponent<Button>();
             thisButton.interactable = true;
             targetPlayer = target;
 
