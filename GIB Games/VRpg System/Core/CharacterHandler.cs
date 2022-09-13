@@ -30,8 +30,8 @@ namespace GIB.VRpg
 
         [Header("Input Fields")]
         //These are the fields on the menu where the player can enter a custom name/title.
-        [SerializeField] private InputField playerCharName;
-        [SerializeField] private InputField playerCharTitle;
+        public InputField playerCharName;
+        public InputField playerCharTitle;
 
         /// <summary>
         /// The current Cyan object pool being used.

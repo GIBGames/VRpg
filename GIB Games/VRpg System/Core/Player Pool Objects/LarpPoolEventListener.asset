@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: LarpPoolEventListener
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 6fa594cc38ce5354781dc7b1c02df37e,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 62bab1a352d903847a60cf8003ca9b36,
     type: 2}
   udonAssembly: 
   assemblyError: 

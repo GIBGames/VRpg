@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: VoiceAmplifier Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 41ed929c5ae639b4ab376ffd7470259d,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 71fabddd4c90b5b40aa798b3e013fc7f,
     type: 2}
   udonAssembly: 
   assemblyError: 
