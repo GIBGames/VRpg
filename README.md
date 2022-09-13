@@ -23,6 +23,9 @@ Import the above required packages. Then, import this package.
 
 This package includes an example scene. Copy the contents of that scene into your scene if desired. For best results, unpack the VRpg prefab.
 
+## In development
+
+A character sheet system! I have already built a version for BNS vampire (for Dark Skylines) and one for 5e D&D. I am now in the process of cleaning it up and will be adding it shortly.
 
 ## Contributing
 Open to pull requests! 
