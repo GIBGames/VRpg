@@ -19,7 +19,7 @@ public class VoiceZone : UdonSharpBehaviour
     public override void OnPlayerTriggerEnter(VRCPlayerApi player)
     {
         characterHandler.HandlerLog($"Player {player.displayName} entered voice zone {zoneId}");
-        LarpPooledPlayer thatPlayer = characterHandler.objectPool._GetPlayerPooledObject(player).GetComponent<LarpPooledPlayer>();
+        LarpPooledPlayer thatPlayer = characterHandler.ObjectPool._GetPlayerPooledObject(player).GetComponent<LarpPooledPlayer>();
         thatPlayer.currentZone = zoneId;
         thatPlayer._UpdateVoiceZones();
     }
@@ -27,7 +27,7 @@ public class VoiceZone : UdonSharpBehaviour
     public override void OnPlayerTriggerExit(VRCPlayerApi player)
     {
         characterHandler.HandlerLog($"Player {player.displayName} exited voice zone.");
-        LarpPooledPlayer thatPlayer = characterHandler.objectPool._GetPlayerPooledObject(player).GetComponent<LarpPooledPlayer>();
+        LarpPooledPlayer thatPlayer = characterHandler.ObjectPool._GetPlayerPooledObject(player).GetComponent<LarpPooledPlayer>();
         thatPlayer.currentZone = 0;
         thatPlayer._UpdateVoiceZones();
     }

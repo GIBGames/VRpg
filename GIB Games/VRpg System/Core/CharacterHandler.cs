@@ -13,41 +13,37 @@ namespace GIB.VRpg
     public class CharacterHandler : UdonSharpBehaviour
     {
         [Tooltip("Storyteller data component.")]
-        public STData stData;
+        public STData _StData;
         [Tooltip("VRpg Menu Component.")]
-        public LarpMenu larpMenu;
+        public LarpMenu _LarpMenu;
         [Tooltip("VRpg Log Component.")]
-        public LarpLog larpLog;
+        public LarpLog _LarpLog;
+        [Tooltip("Voice Zone Controller Component.")]
+        public VoiceZoneController _VoiceController;
 
         [Tooltip("Patron/VIP whitelist component")]
-        public PatronData patronData;
+        public PatronData _PatronData;
         /// <summary>
         /// The object with an <see cref="AudioSource"/> that can play when the ST is called.
         /// </summary>
-        public GameObject alertObject;
+        public AudioSource alertObject;
 
         [Header("Input Fields")]
         //These are the fields on the menu where the player can enter a custom name/title.
-        public InputField playerCharName;
-        public InputField playerCharTitle;
+        [SerializeField] private InputField playerCharName;
+        [SerializeField] private InputField playerCharTitle;
 
         /// <summary>
         /// The current Cyan object pool being used.
         /// </summary>
         [Header("Object Pool")]
-        public CyanPlayerObjectAssigner objectPool;
+        public CyanPlayerObjectAssigner ObjectPool;
         /// <summary>
         /// The local player's current object from the Cyan Object Pool.
         /// </summary>
         [HideInInspector]
-        public LarpPooledPlayer localPoolObject;
+        public LarpPooledPlayer LocalPoolObject;
 
-        [Header("Voice Zone Levels")]
-
-        [Tooltip("The player's voice when in the same Voice Zone or not in a voice zone.")]
-        public float InVoiceZone = 25f;
-        [Tooltip("The player's voice when in a different voice zone.")]
-        public float OutVoiceZone = 0f;
 
         #region Object Pool
 
@@ -59,7 +55,7 @@ namespace GIB.VRpg
 
         public LarpPooledPlayer LocalPooledPlayer()
         {
-            return localPoolObject;
+            return LocalPoolObject;
         }
 
         public void _OnLocalPlayerAssigned()
@@ -67,7 +63,7 @@ namespace GIB.VRpg
             Debug.Log("The local player has been assigned an object from the pool!");
 
             // Get the local player's pool object so we can later perform operations on it.
-            localPoolObject = (LarpPooledPlayer)objectPool._GetPlayerPooledUdon(Networking.LocalPlayer);
+            LocalPoolObject = (LarpPooledPlayer)ObjectPool._GetPlayerPooledUdon(Networking.LocalPlayer);
 
             DisableInteractive = true;
         }
@@ -103,9 +99,9 @@ namespace GIB.VRpg
         /// </summary>
         public void UpdateNameAndTitle()
         {
-            if (localPoolObject != null && playerCharName.text != string.Empty)
+            if (LocalPoolObject != null && playerCharName.text != string.Empty)
             {
-                localPoolObject.SetNameAndTitleNVC(playerCharName.text, playerCharTitle.text);
+                LocalPoolObject.SetNameAndTitleNVC(playerCharName.text, playerCharTitle.text);
             }
         }
 
@@ -116,8 +112,8 @@ namespace GIB.VRpg
         /// <param name="newTitle"></param>
         public void SetNameAndTitle(string newName, string newTitle)
         {
-            if (localPoolObject != null)
-                localPoolObject.SetNameAndTitleNVC(newName, newTitle);
+            if (LocalPoolObject != null)
+                LocalPoolObject.SetNameAndTitleNVC(newName, newTitle);
         }
 
         #region Button commands
@@ -128,54 +124,54 @@ namespace GIB.VRpg
         /// </summary>
         public void HideMyLabel()
         {
-            localPoolObject.SetNameAndTitleNVC(" ", " ");
+            LocalPoolObject.SetNameAndTitleNVC(" ", " ");
         }
 
         public void OOCLabel()
         {
-            localPoolObject.SetNameAndTitleNVC("Out of Character", "<color=\"cyan\">" + Networking.LocalPlayer.displayName + "</color>");
+            LocalPoolObject.SetNameAndTitleNVC("Out of Character", "<color=\"cyan\">" + Networking.LocalPlayer.displayName + "</color>");
         }
 
         public void STLabel()
         {
-            localPoolObject.SetNameAndTitleNVC(Networking.LocalPlayer.displayName, "<color=\"orange\">Storyteller</color>");
+            LocalPoolObject.SetNameAndTitleNVC(Networking.LocalPlayer.displayName, "<color=\"orange\">Storyteller</color>");
         }
 
         // Map icons
         public void HideIcon()
         {
-            localPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "HideIcon");
+            LocalPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "HideIcon");
         }
 
         public void ShowIcon()
         {
-            localPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "ShowIcon");
+            LocalPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "ShowIcon");
         }
 
         //Use power level to represent rank insignia and more.
         public void PowerLevel0()
         {
-            localPoolObject.SetPowerLevelNVC(0);
+            LocalPoolObject.SetPowerLevelNVC(0);
         }
         public void PowerLevel1()
         {
-            localPoolObject.SetPowerLevelNVC(1);
+            LocalPoolObject.SetPowerLevelNVC(1);
         }
         public void PowerLevel2()
         {
-            localPoolObject.SetPowerLevelNVC(2);
+            LocalPoolObject.SetPowerLevelNVC(2);
         }
         public void PowerLevel3()
         {
-            localPoolObject.SetPowerLevelNVC(3);
+            LocalPoolObject.SetPowerLevelNVC(3);
         }
         public void PowerLevel4()
         {
-            localPoolObject.SetPowerLevelNVC(4);
+            LocalPoolObject.SetPowerLevelNVC(4);
         }
         public void PowerLevel5()
         {
-            localPoolObject.SetPowerLevelNVC(5);
+            LocalPoolObject.SetPowerLevelNVC(5);
         }
 
         #endregion
@@ -227,7 +223,7 @@ namespace GIB.VRpg
         /// <param name="toLog">Target message.</param>
         public void Log(string toLog)
         {
-            larpLog.AddToLog(toLog);
+            _LarpLog.AddToLog(toLog);
         }
     }
 }

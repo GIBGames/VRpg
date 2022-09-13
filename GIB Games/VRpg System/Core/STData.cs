@@ -81,7 +81,7 @@ namespace GIB.VRpg
         {
             selectedPlayer = remPlayer;
             selectedPlayerName.text = remPlayer.Owner.displayName;
-            characterHandler.localPoolObject.targetPlayerId = remPlayer.Owner.playerId;
+            characterHandler.LocalPoolObject.targetPlayerId = remPlayer.Owner.playerId;
         }
 
         public void UpdateCurrentST()
@@ -96,7 +96,7 @@ namespace GIB.VRpg
                 stButton.NoCharacter();
             }
 
-            Component[] poolList = characterHandler.objectPool._GetActivePoolObjects();
+            Component[] poolList = characterHandler.ObjectPool._GetActivePoolObjects();
 
             for (int i = 0; i < poolList.Length; i++)
             {

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: STMenu Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 33cf6165c76821847a07d92a621093f7,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 92edd0a89cd235c4788ff4984724b63e,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 2a4d18c691999174e9a5a02bbc405cce, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 06b4be65b0252fd4d9fbd128ab7051c5, type: 3}
   behaviourSyncMode: 0
   behaviourIDHeapVarName: __refl_const_intnl_udonTypeID
   compileErrors: []
@@ -25,7 +25,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11500000, guid: ada8cac1f4b5375468ca2f11d18bacca, type: 3}
+    - {fileID: 11500000, guid: 1ba3edf34d219c14bbc5e00221108dd3, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 4|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: STData, Assembly-CSharp
+      Data: GIB.VRpg.STData, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

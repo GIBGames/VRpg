@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: LarpPoolEventListener
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 62bab1a352d903847a60cf8003ca9b36,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 6fa594cc38ce5354781dc7b1c02df37e,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 03ff33ad171a3e047b7e21a39efbad9f, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 447732e8845354f4babb583ac5315224, type: 3}
   behaviourSyncMode: 0
   behaviourIDHeapVarName: __refl_const_intnl_udonTypeID
   compileErrors: []
@@ -26,7 +26,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11500000, guid: 511c88e9e2f5ef84aa091d7eca6eeb51, type: 3}
-    - {fileID: 11500000, guid: 5b42cb9ace5bc2b4f99ae9033f473e91, type: 3}
+    - {fileID: 11500000, guid: e02df3b6f2fbf7c48880a923dbcdd9f5, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -126,7 +126,7 @@ MonoBehaviour:
       Data: 8|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: LarpPooledPlayer, Assembly-CSharp
+      Data: GIB.VRpg.LarpPooledPlayer, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

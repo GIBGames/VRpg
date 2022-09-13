@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: VoiceZone Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: ec8f36190229d3842a8a79e31521fb88,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: c7d47625a27769e47a297f241550deb4,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 1b273526e6c5f734dbe3d498c3f5c86e, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 3de06439f5e829e40890bbf710e9fa11, type: 3}
   behaviourSyncMode: 0
   behaviourIDHeapVarName: __refl_const_intnl_udonTypeID
   compileErrors: []
@@ -25,7 +25,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11500000, guid: 7c5d228d1c148464d8db28b9796a0246, type: 3}
+    - {fileID: 11500000, guid: 4c720c4b1dea0f447984f352e25c51d8, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 4|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: CharacterHandler, Assembly-CSharp
+      Data: GIB.VRpg.CharacterHandler, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

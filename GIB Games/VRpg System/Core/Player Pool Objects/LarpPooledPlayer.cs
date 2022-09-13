@@ -90,7 +90,7 @@ namespace GIB.VRpg
             if (Owner.isLocal)
             {
                 characterHandler.HandlerLog($"Pooled object assigned to {Networking.LocalPlayer.displayName}");
-                characterHandler.localPoolObject = this;
+                characterHandler.LocalPoolObject = this;
                 //mapIcon.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.yellow);
                 mapDot.color = Color.yellow;
             }
@@ -101,7 +101,7 @@ namespace GIB.VRpg
                 isStoryteller = true;
             }
 
-            if (GetCharacterHandler().patronData.isPatron(Owner.displayName))
+            if (GetCharacterHandler()._PatronData.isPatron(Owner.displayName))
             {
                 nameLabel.color = new Color(255f, 251f, 0f);
             }
@@ -193,15 +193,15 @@ namespace GIB.VRpg
 
         public void _UpdateVoiceZones()
         {
-            foreach (LarpPooledPlayer c in (LarpPooledPlayer[])GetCharacterHandler().objectPool._GetActivePoolObjects())
+            foreach (LarpPooledPlayer c in (LarpPooledPlayer[])GetCharacterHandler().ObjectPool._GetActivePoolObjects())
             {
-                if (c.currentZone == 0 || c.currentZone == characterHandler.localPoolObject.currentZone)
+                if (c.currentZone == 0 || c.currentZone == characterHandler.LocalPoolObject.currentZone)
                 {
-                    c.Owner.SetVoiceDistanceFar(GetCharacterHandler().InVoiceZone);
+                    c.Owner.SetVoiceDistanceFar(GetCharacterHandler()._VoiceController.InVoiceZone);
                 }
                 else
                 {
-                    c.Owner.SetVoiceDistanceFar(GetCharacterHandler().OutVoiceZone);
+                    c.Owner.SetVoiceDistanceFar(GetCharacterHandler()._VoiceController.OutVoiceZone);
                 }
             }
         }
@@ -218,7 +218,7 @@ namespace GIB.VRpg
 
         private void _UpdateNameLabel()
         {
-            if (Owner != null && GetCharacterHandler().patronData.isPatron(Owner.displayName))
+            if (Owner != null && GetCharacterHandler()._PatronData.isPatron(Owner.displayName))
             {
                 nameLabel.text = "<color=\"yellow\">" + charName + "</color>";
             }
@@ -232,7 +232,7 @@ namespace GIB.VRpg
 
         public void SetSelected()
         {
-            GetCharacterHandler().stData.SetSelectedPlayer(gameObject.GetComponent<LarpPooledPlayer>());
+            GetCharacterHandler()._StData.SetSelectedPlayer(gameObject.GetComponent<LarpPooledPlayer>());
         }
 
         public void HideIcon()

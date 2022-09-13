@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: STData Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: a0000cf2201c2234bb216b10faedf60a,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: b158cbb0a8b916c409abb7d4d14b3ecd,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: ada8cac1f4b5375468ca2f11d18bacca, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 1ba3edf34d219c14bbc5e00221108dd3, type: 3}
   behaviourSyncMode: 0
   behaviourIDHeapVarName: __refl_const_intnl_udonTypeID
   compileErrors: []
@@ -25,9 +25,9 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11500000, guid: 7c5d228d1c148464d8db28b9796a0246, type: 3}
-    - {fileID: 11500000, guid: e64c2d7e112e06f4692f6d3dcf688f1c, type: 3}
-    - {fileID: 11500000, guid: 5b42cb9ace5bc2b4f99ae9033f473e91, type: 3}
+    - {fileID: 11500000, guid: 4c720c4b1dea0f447984f352e25c51d8, type: 3}
+    - {fileID: 11500000, guid: 325bd88408244c143a108f83361a5479, type: 3}
+    - {fileID: 11500000, guid: e02df3b6f2fbf7c48880a923dbcdd9f5, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -64,7 +64,7 @@ MonoBehaviour:
       Data: 4|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: CharacterHandler, Assembly-CSharp
+      Data: GIB.VRpg.CharacterHandler, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -697,7 +697,7 @@ MonoBehaviour:
       Data: 49|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: STPlayerButton[], Assembly-CSharp
+      Data: GIB.VRpg.STPlayerButton[], Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -766,7 +766,7 @@ MonoBehaviour:
       Data: 54|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: LarpPooledPlayer, Assembly-CSharp
+      Data: GIB.VRpg.LarpPooledPlayer, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

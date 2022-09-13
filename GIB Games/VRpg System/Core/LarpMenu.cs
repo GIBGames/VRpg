@@ -75,7 +75,7 @@ namespace GIB.VRpg
 
         public void ShowST()
         {
-            stFunctions.SetActive(characterHandler.localPoolObject.isStoryteller);
+            stFunctions.SetActive(characterHandler.LocalPoolObject.isStoryteller);
             ShowPanel(4);
         }
         #endregion
