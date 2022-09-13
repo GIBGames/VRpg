@@ -174,6 +174,11 @@ namespace GIB.VRpg
             LocalPoolObject.SetPowerLevelNVC(5);
         }
 
+        public void SetStreaming(bool state)
+        {
+            LocalPoolObject.SetStreamingNVC(state);
+        }
+
         #endregion
 
         #region ST Call button

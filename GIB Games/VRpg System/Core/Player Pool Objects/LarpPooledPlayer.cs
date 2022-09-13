@@ -21,6 +21,7 @@ namespace GIB.VRpg
         [UdonSynced] public string charName = " ";
         [UdonSynced] public string charTitle = " ";
         [UdonSynced] public int powerLevel;
+        [UdonSynced] public bool isStreaming;
 
         public bool isStoryteller;
 
@@ -46,6 +47,8 @@ namespace GIB.VRpg
         private string prevCharTitle;
         private int prevPowerLevel;
         public int prevPlayerId;
+        private bool prevStreaming;
+
 
         #region aliases
 
@@ -189,6 +192,13 @@ namespace GIB.VRpg
                 prevPowerLevel = powerLevel;
                 _UpdatePowerLevel();
             }
+
+            if (isStreaming != prevStreaming)
+            {
+                characterHandler.HandlerLog($"Streaming state change: {GetOwnerName()}");
+                prevStreaming = isStreaming;
+                _UpdateStreaming();
+            }
         }
 
         public void _UpdateVoiceZones()
@@ -214,6 +224,11 @@ namespace GIB.VRpg
             }
             if (powerLevel == 0) return;
             powerLevels[powerLevel].SetActive(true);
+        }
+
+        public void _UpdateStreaming()
+        {
+            streamIcon.SetActive(isStreaming);
         }
 
         private void _UpdateNameLabel()
@@ -262,6 +277,13 @@ namespace GIB.VRpg
         public void SetPowerLevelNVC(int targetPowerLevel)
         {
             powerLevel = targetPowerLevel;
+
+            NotifyValueChanged();
+        }
+
+        public void SetStreamingNVC(bool state)
+        {
+            isStreaming = prevStreaming;
 
             NotifyValueChanged();
         }

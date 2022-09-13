@@ -26,7 +26,7 @@ namespace GIB.VRpg
         private void Start()
         {
             if (characterHandler == null)
-                characterHandler = GameObject.Find("CharacterHandler").GetComponent<CharacterHandler>();
+                characterHandler = GameObject.Find("VRPG Character Handler").GetComponent<CharacterHandler>();
         }
 
         /// <summary>
