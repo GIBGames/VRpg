@@ -75,7 +75,8 @@ namespace GIB.VRpg
 
         public void ShowSocial()
         {
-            stFunctions.SetActive(characterHandler.LocalPoolObject.isStoryteller);
+            if(characterHandler.LocalPooledPlayer() != null)
+                stFunctions.SetActive(characterHandler.LocalPooledPlayer().isStoryteller);
             ShowPanel(4);
         }
         #endregion

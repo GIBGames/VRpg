@@ -55,6 +55,9 @@ namespace GIB.VRpg
 
         public LarpPooledPlayer LocalPooledPlayer()
         {
+            if (LocalPoolObject == null)
+                LocalPoolObject = (LarpPooledPlayer)ObjectPool._GetPlayerPooledUdon(Networking.LocalPlayer);
+
             return LocalPoolObject;
         }
 
@@ -112,8 +115,7 @@ namespace GIB.VRpg
         /// <param name="newTitle"></param>
         public void SetNameAndTitle(string newName, string newTitle)
         {
-            if (LocalPoolObject != null)
-                LocalPoolObject.SetNameAndTitleNVC(newName, newTitle);
+            LocalPooledPlayer().SetNameAndTitleNVC(newName, newTitle);
         }
 
         #region Button commands
@@ -233,7 +235,7 @@ namespace GIB.VRpg
 
         public void CallST()
         {
-            if (LocalPoolObject.isStoryteller)
+            if (LocalPooledPlayer().isStoryteller)
                 alertObject.Play();
         }
     }
