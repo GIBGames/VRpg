@@ -93,5 +93,10 @@ namespace GIB.VRpg
         {
             RollDie(20);
         }
+
+        public void STRespond()
+        {
+            AddToLog($"<color=#FFFFCC>{Networking.LocalPlayer.displayName} responded to ST call</color>");
+        }
     }
 }

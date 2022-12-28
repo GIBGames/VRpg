@@ -18,10 +18,15 @@ namespace GIB.VRpg
                 thisButton = GetComponent<Button>();
         }
 
-        public void NoCharacter()
+        private void ValidateButton()
         {
             if (thisButton == null)
                 thisButton = GetComponent<Button>();
+        }
+
+        public void NoCharacter()
+        {
+            ValidateButton();
             gameObject.GetComponentInChildren<Text>().text = "";
             targetPlayer = null;
             thisButton.interactable = false;
@@ -29,8 +34,7 @@ namespace GIB.VRpg
 
         public void AssignCharacter(LarpPooledPlayer target)
         {
-            if (thisButton == null)
-                thisButton = GetComponent<Button>();
+            ValidateButton();
             thisButton.interactable = true;
             targetPlayer = target;
 

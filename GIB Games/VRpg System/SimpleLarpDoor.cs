@@ -7,36 +7,51 @@ using VRC.Udon;
 public class SimpleLarpDoor : UdonSharpBehaviour
 {
     [SerializeField] private Animator animator;
-    private bool isOpen;
-    [SerializeField] private bool isNetworked = true;
+    [UdonSynced] public bool isOpen;
     [SerializeField] private string targetParameter = "isOpen";
 
     public override void Interact()
     {
-        isOpen = !isOpen;
+        // Dear future toast
+        // your code is shit
 
-        if(isNetworked)
-        {
-            if (isOpen)
-                SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "OpenDoor");
-            else
-                SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "CloseDoor");
-        }
-        else
-        {
-            animator.SetBool(targetParameter, isOpen);
-        }
+        // your code is so shit that I think it's shit while high
+        // go fuck yourself
+
+        // biscuits
+        DoorCheckSynced(!isOpen);
+    }
+
+    public override void OnDeserialization()
+    {
+        CheckDoor();
+    }
+
+    public void TryDoor()
+    {
+        DoorCheckSynced(!isOpen);
+    }
+
+    public void CheckDoor()
+    {
+        animator.SetBool(targetParameter, isOpen);
+    }
+
+    public void DoorCheckSynced(bool targetState)
+    {
+        Networking.SetOwner(Networking.LocalPlayer, gameObject);
+        isOpen = targetState;
+        RequestSerialization();
+        CheckDoor();
     }
 
     public void OpenDoor()
     {
-        isOpen = true;
-        animator.SetBool(targetParameter, isOpen);
+        DoorCheckSynced(true);
     }
 
     public void CloseDoor()
     {
-        isOpen = false;
-        animator.SetBool(targetParameter, isOpen);
+        DoorCheckSynced(false);
     }
 }

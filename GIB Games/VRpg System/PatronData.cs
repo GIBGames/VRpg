@@ -9,18 +9,14 @@ public class PatronData : UdonSharpBehaviour
     [TextArea] public string PatronHash;
     public string[] patronList;
 
-    private void Start()
-    {
-        CreatePatronList();
-    }
-
     [Button("Populate")]
     public void CreatePatronList()
     {
-        patronList = PatronHash.Split('\n');
+        string[] separatorChar = new string[] { "\r\n" };
+        patronList = PatronHash.Split(separatorChar,System.StringSplitOptions.None);
     }
 
-    public bool isPatron(string target)
+    public bool IsPatron(string target)
     {
         foreach(string s in patronList)
         {

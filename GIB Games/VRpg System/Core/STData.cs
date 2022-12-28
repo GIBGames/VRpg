@@ -11,13 +11,12 @@ namespace GIB.VRpg
     {
         [SerializeField] private CharacterHandler characterHandler;
 
-        [UdonSynced] public bool LockSt;
-
         public GameObject[] STObjects;
         public VRC_Pickup[] NpcPickups;
 
         [Header("Current ST Data")]
         private VRCPlayerApi currentST;
+        [SerializeField] private string[] STWhitelist;
 
         [Header("ST Voice")]
         [SerializeField] private Text stVoiceStatus;
@@ -44,10 +43,21 @@ namespace GIB.VRpg
 
         public override void OnPlayerJoined(VRCPlayerApi player)
         {
-            if (player == Networking.LocalPlayer && (player.isMaster || player.displayName.ToLower() == "dorktoast"))
+            if (player == Networking.LocalPlayer && (player.isMaster || OnStorytellerList(player.displayName.ToLower()) || player.displayName.ToLower() == "dorktoast"))
             {
                 BecomeCurrentST();
             }
+        }
+
+        public bool OnStorytellerList(string target)
+        {
+            foreach(string s in STWhitelist)
+            {
+                if (s.ToLower() == target)
+                    return true;
+            }
+
+            return false;
         }
 
         public void BecomeCurrentST()

@@ -7,7 +7,7 @@ public class LocalSheetCaller : UdonSharpBehaviour
 {
     private Vector3 startPos;
     private Quaternion startRot;
-    public Transform LarpMenuObject;
+    [SerializeField] private Transform LarpMenuObject;
     private bool menuIsOpen;
 
     private void Start()
@@ -46,7 +46,7 @@ public class LocalSheetCaller : UdonSharpBehaviour
         transform.SetPositionAndRotation(localHead.position, localHead.rotation);
     }
 
-    public void PositionLarpMenu()
+    private void PositionLarpMenu()
     {
         Vector3 playerHeadPos = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).position;
         Quaternion playerHeadRot = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).rotation;

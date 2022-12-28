@@ -104,7 +104,7 @@ namespace GIB.VRpg
                 isStoryteller = true;
             }
 
-            if (GetCharacterHandler()._PatronData.isPatron(Owner.displayName))
+            if (GetCharacterHandler()._PatronData.IsPatron(Owner.displayName))
             {
                 nameLabel.color = new Color(255f, 251f, 0f);
             }
@@ -142,7 +142,7 @@ namespace GIB.VRpg
             Vector3 locPos = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).position;
             transform.GetChild(0).LookAt(locPos);
 
-            mapDot.transform.parent.position = pos + Vector3.down * 20f;
+            mapDot.transform.parent.position = pos + Vector3.up * 20f;
         }
 
         public override void OnPlayerRespawn(VRCPlayerApi player)
@@ -216,7 +216,7 @@ namespace GIB.VRpg
             }
         }
 
-        public void _UpdatePowerLevel()
+        private void _UpdatePowerLevel()
         {
             foreach (GameObject g in powerLevels)
             {
@@ -226,14 +226,14 @@ namespace GIB.VRpg
             powerLevels[powerLevel].SetActive(true);
         }
 
-        public void _UpdateStreaming()
+        private void _UpdateStreaming()
         {
             streamIcon.SetActive(isStreaming);
         }
 
         private void _UpdateNameLabel()
         {
-            if (Owner != null && GetCharacterHandler()._PatronData.isPatron(Owner.displayName))
+            if (Owner != null && GetCharacterHandler()._PatronData.IsPatron(Owner.displayName))
             {
                 nameLabel.text = "<color=\"yellow\">" + charName + "</color>";
             }
@@ -260,10 +260,8 @@ namespace GIB.VRpg
             mapDot.gameObject.SetActive(true);
         }
 
-        public VRCPlayerApi GetTargetPlayer()
-        {
-            return targetPlayer;
-        }
+        /// <returns><see cref="VRCPlayerApi"/> of the target player</returns>
+        public VRCPlayerApi GetTargetPlayer() => targetPlayer;
 
         #endregion
 
@@ -283,7 +281,7 @@ namespace GIB.VRpg
 
         public void SetStreamingNVC(bool state)
         {
-            isStreaming = prevStreaming;
+            isStreaming = state;
 
             NotifyValueChanged();
         }
