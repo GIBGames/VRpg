@@ -18,6 +18,7 @@ namespace GIB.VRpg
         public LarpMenu _LarpMenu;
         [Tooltip("VRpg Log Component.")]
         public LarpLog _LarpLog;
+
         [Tooltip("Voice Zone Controller Component.")]
         public VoiceZoneController _VoiceController;
 
