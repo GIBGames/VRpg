@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: STMenu Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 33cf6165c76821847a07d92a621093f7,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 17839c2497f4b39478c627a04b069a1e,
     type: 2}
   udonAssembly: 
   assemblyError: 
