@@ -18,6 +18,8 @@ namespace GIB.VRpg
         public LarpMenu _LarpMenu;
         [Tooltip("VRpg Log Component.")]
         public LarpLog _LarpLog;
+        [SerializeField] private Text demoName;
+        [SerializeField] private Text demoTitle;
 
         [Tooltip("Voice Zone Controller Component.")]
         public VoiceZoneController _VoiceController;
@@ -105,7 +107,7 @@ namespace GIB.VRpg
         {
             if (LocalPoolObject != null && playerCharName.text != string.Empty)
             {
-                LocalPoolObject.SetNameAndTitleNVC(playerCharName.text, playerCharTitle.text);
+                UpdateCharacterLabel(playerCharName.text, playerCharTitle.text);
             }
         }
 
@@ -116,71 +118,29 @@ namespace GIB.VRpg
         /// <param name="newTitle"></param>
         public void SetNameAndTitle(string newName, string newTitle)
         {
-            LocalPooledPlayer().SetNameAndTitleNVC(newName, newTitle);
+            UpdateCharacterLabel(newName, newTitle);
         }
 
         #region Button commands
 
         #region Label and icon control
-        /// <summary>
-        /// Hide the player's label completely.
-        /// </summary>
-        public void HideMyLabel()
-        {
-            LocalPoolObject.SetNameAndTitleNVC(" ", " ");
-        }
+        // Basic label settings
+        public void HideMyLabel()=>UpdateCharacterLabel(" ", " ");
+        public void OOCLabel()=>UpdateCharacterLabel("Out of Character", "<color=\"cyan\">" + Networking.LocalPlayer.displayName + "</color>");
+        public void STLabel()=>UpdateCharacterLabel(Networking.LocalPlayer.displayName, "<color=\"orange\">Storyteller</color>");
 
-        public void OOCLabel()
-        {
-            LocalPoolObject.SetNameAndTitleNVC("Out of Character", "<color=\"cyan\">" + Networking.LocalPlayer.displayName + "</color>");
-        }
-
-        public void STLabel()
-        {
-            LocalPoolObject.SetNameAndTitleNVC(Networking.LocalPlayer.displayName, "<color=\"orange\">Storyteller</color>");
-        }
-
-        // Map icons
-        public void HideIcon()
-        {
-            LocalPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "HideIcon");
-        }
-
-        public void ShowIcon()
-        {
-            LocalPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "ShowIcon");
-        }
+        // Hide or show map icons
+        public void HideIcon()=>LocalPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "HideIcon");
+        public void ShowIcon()=>LocalPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "ShowIcon");
 
         //Use power level to represent rank insignia and more.
-        public void PowerLevel0()
-        {
-            LocalPoolObject.SetPowerLevelNVC(0);
-        }
-        public void PowerLevel1()
-        {
-            LocalPoolObject.SetPowerLevelNVC(1);
-        }
-        public void PowerLevel2()
-        {
-            LocalPoolObject.SetPowerLevelNVC(2);
-        }
-        public void PowerLevel3()
-        {
-            LocalPoolObject.SetPowerLevelNVC(3);
-        }
-        public void PowerLevel4()
-        {
-            LocalPoolObject.SetPowerLevelNVC(4);
-        }
-        public void PowerLevel5()
-        {
-            LocalPoolObject.SetPowerLevelNVC(5);
-        }
-
-        public void SetStreaming(bool state)
-        {
-            LocalPoolObject.SetStreamingNVC(state);
-        }
+        public void PowerLevel0()=>LocalPoolObject.SetPowerLevelNVC(0);
+        public void PowerLevel1()=>LocalPoolObject.SetPowerLevelNVC(1);
+        public void PowerLevel2()=>LocalPoolObject.SetPowerLevelNVC(2);
+        public void PowerLevel3()=>LocalPoolObject.SetPowerLevelNVC(3);
+        public void PowerLevel4()=>LocalPoolObject.SetPowerLevelNVC(4);
+        public void PowerLevel5()=>LocalPoolObject.SetPowerLevelNVC(5);
+        public void SetStreaming(bool state)=>LocalPoolObject.SetStreamingNVC(state);
 
         #endregion
 
@@ -238,6 +198,13 @@ namespace GIB.VRpg
         {
             if (LocalPooledPlayer().isStoryteller)
                 alertObject.Play();
+        }
+
+        private void UpdateCharacterLabel(string newName, string newTitle)
+        {
+            demoName.text = newName;
+            demoTitle.text = newTitle;
+            LocalPoolObject.SetNameAndTitleNVC(newName, newTitle);
         }
     }
 }
