@@ -1,11 +1,13 @@
 ﻿using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
+using UdonToolkit;
 using VRC.SDKBase;
 using VRC.Udon;
 
 namespace GIB.VRpg
 {
+    [CustomName("VRPG Patron Handler")]
     public class LarpLog : UdonSharpBehaviour
     {
         [SerializeField] private CharacterHandler characterHandler;

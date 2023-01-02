@@ -2,70 +2,75 @@
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
+using UdonToolkit;
 
-public class LocalSheetCaller : UdonSharpBehaviour
+namespace GIB.VRpg
 {
-    private Vector3 startPos;
-    private Quaternion startRot;
-    [SerializeField] private Transform LarpMenuObject;
-    private bool menuIsOpen;
-
-    private void Start()
+    [CustomName("VRPG Local Sheet Caller")]
+    public class LocalSheetCaller : UdonSharpBehaviour
     {
-        if (LarpMenuObject == null)
-            LarpMenuObject = GameObject.Find("VRPG Local Menu").transform;
+        private Vector3 startPos;
+        private Quaternion startRot;
+        [SerializeField] private Transform LarpMenuObject;
+        private bool menuIsOpen;
 
-        startPos = LarpMenuObject.position;
-        startRot = LarpMenuObject.rotation;
-    }
-
-    private void Update()
-    {
-        bool menuButtonPressed = Input.GetKeyDown(KeyCode.Tab);
-        if (menuButtonPressed)
+        private void Start()
         {
-            Interact();
+            if (LarpMenuObject == null)
+                LarpMenuObject = GameObject.Find("VRPG Local Menu").transform;
+
+            startPos = LarpMenuObject.position;
+            startRot = LarpMenuObject.rotation;
         }
-    }
 
-    public override void Interact()
-    {
-        if (menuIsOpen)
-            CloseLarpMenu();
-        else
-            OpenLarpMenu();
-    }
+        private void Update()
+        {
+            bool menuButtonPressed = Input.GetKeyDown(KeyCode.Tab);
+            if (menuButtonPressed)
+            {
+                Interact();
+            }
+        }
 
-    private void FixedUpdate()
-    {
-        if (Networking.LocalPlayer == null) return;
+        public override void Interact()
+        {
+            if (menuIsOpen)
+                CloseLarpMenu();
+            else
+                OpenLarpMenu();
+        }
 
-        VRCPlayerApi.TrackingData localHead = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head);
+        private void FixedUpdate()
+        {
+            if (Networking.LocalPlayer == null) return;
 
-        //if (localHead != null)
-        transform.SetPositionAndRotation(localHead.position, localHead.rotation);
-    }
+            VRCPlayerApi.TrackingData localHead = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head);
 
-    private void PositionLarpMenu()
-    {
-        Vector3 playerHeadPos = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).position;
-        Quaternion playerHeadRot = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).rotation;
+            //if (localHead != null)
+            transform.SetPositionAndRotation(localHead.position, localHead.rotation);
+        }
 
-        LarpMenuObject.SetPositionAndRotation(playerHeadPos, playerHeadRot);
+        private void PositionLarpMenu()
+        {
+            Vector3 playerHeadPos = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).position;
+            Quaternion playerHeadRot = Networking.LocalPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).rotation;
 
-        LarpMenuObject.position += transform.forward * .9f;
-    }
+            LarpMenuObject.SetPositionAndRotation(playerHeadPos, playerHeadRot);
 
-    public void OpenLarpMenu()
-    {
-        menuIsOpen = true;
-        PositionLarpMenu();
-    }
+            LarpMenuObject.position += transform.forward * .9f;
+        }
 
-    public void CloseLarpMenu()
-    {
-        menuIsOpen = false;
+        public void OpenLarpMenu()
+        {
+            menuIsOpen = true;
+            PositionLarpMenu();
+        }
 
-        LarpMenuObject.transform.SetPositionAndRotation(startPos, startRot);
+        public void CloseLarpMenu()
+        {
+            menuIsOpen = false;
+
+            LarpMenuObject.transform.SetPositionAndRotation(startPos, startRot);
+        }
     }
 }

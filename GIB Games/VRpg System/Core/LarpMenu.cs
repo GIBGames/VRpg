@@ -3,12 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon;
+using UdonToolkit;
 
 namespace GIB.VRpg
 {
     /// <summary>
     /// An in-game menu that allows players and STs to perform special functions.
     /// </summary>
+    [CustomName("VRPG Menu")]
     public class LarpMenu : UdonSharpBehaviour
     {
         [SerializeField] private CharacterHandler characterHandler;
