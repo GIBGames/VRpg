@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon;
+using UdonToolkit;
 
 namespace GIB.VRpg
 {
     /// <summary>
     /// The main listener and controller of the various parts of the VRpg System.
     /// </summary>
+    [CustomName("VRPG Character Handler")]
     public class CharacterHandler : UdonSharpBehaviour
     {
         [Tooltip("Storyteller data component.")]

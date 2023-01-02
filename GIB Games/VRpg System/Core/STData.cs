@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon;
+using UdonToolkit;
 
 namespace GIB.VRpg
 {
+    [CustomName("Storyteller Data")]
     public class STData : UdonSharpBehaviour
     {
         [SerializeField] private CharacterHandler characterHandler;
