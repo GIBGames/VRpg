@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub followers](https://img.shields.io/github/followers/GIBGames?style=social) [![Twitter Follow](https://img.shields.io/twitter/follow/gibgames?style=social)](https://twitter.com/GibGames) [![Discord](https://img.shields.io/discord/539176606468669440?label=discord)](https://discord.gg/jvZkahu)
 
-# GIB Games Presents: VRpg framework
+# GIB Games Presents: VRpg Roleplaying Game System
 A system for creating RPG systems in VRChat.
 
 **See an example of this script in action: [Vampire the Masquerade - Dark Skylines](https://vrchat.com/home/world/wrld_e7396f79-da8f-4e3c-af72-9a2e5aa70319) on VRChat!**
