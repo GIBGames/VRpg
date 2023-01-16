@@ -18,6 +18,8 @@ namespace GIB.VRpg
         public LarpMenu _LarpMenu;
         [Tooltip("VRpg Log Component.")]
         public LarpLog _LarpLog;
+        [Tooltip("World Render Settings")]
+        public WorldRenderSettings _WorldRender;
         [SerializeField] private Text demoName;
         [SerializeField] private Text demoTitle;
 
