@@ -434,7 +434,7 @@ MonoBehaviour:
       Data: 27|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: VoiceZoneController, Assembly-CSharp
+      Data: GIB.VRpg.VoiceZoneController, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -497,7 +497,7 @@ MonoBehaviour:
       Data: 31|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: PatronData, Assembly-CSharp
+      Data: GIB.VRpg.PatronData, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

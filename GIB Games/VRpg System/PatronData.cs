@@ -4,25 +4,30 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 using GIB.VRpg;
-public class PatronData : UdonSharpBehaviour
+
+namespace GIB.VRpg
 {
-    [TextArea] public string PatronHash;
-    public string[] patronList;
-
-    [Button("Populate")]
-    public void CreatePatronList()
+    [CustomName("VRPG Patron Handler")]
+    public class PatronData : UdonSharpBehaviour
     {
-        string[] separatorChar = new string[] { "\r\n" };
-        patronList = PatronHash.Split(separatorChar,System.StringSplitOptions.None);
-    }
+        [TextArea] public string PatronHash;
+        public string[] patronList;
 
-    public bool IsPatron(string target)
-    {
-        foreach(string s in patronList)
+        [Button("Populate")]
+        public void CreatePatronList()
         {
-            if (s.ToLower() == target.ToLower())
-                return true;
+            string[] separatorChar = new string[] { "\r\n" };
+            patronList = PatronHash.Split(separatorChar, System.StringSplitOptions.None);
         }
-        return false;
+
+        public bool IsPatron(string target)
+        {
+            foreach (string s in patronList)
+            {
+                if (s.ToLower() == target.ToLower())
+                    return true;
+            }
+            return false;
+        }
     }
 }
