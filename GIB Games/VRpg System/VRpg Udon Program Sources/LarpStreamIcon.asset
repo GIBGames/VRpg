@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: LarpStreamIcon
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: d6690cb58e16f40429d470a60186fd07,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: b36cf4557eb8cb1448b8112d80c1cdde,
     type: 2}
   udonAssembly: 
   assemblyError: 

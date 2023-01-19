@@ -6,8 +6,8 @@ using GIB.VRpg;
 public class VoiceAmplifier : UdonSharpBehaviour
 {
     [SerializeField] private CharacterHandler characterHandler;
-    [SerializeField,Range(0f,10f)] private float targetNear = 0;
-    [SerializeField,Range(10f,50f)] private float targetFar = 25;
+    [SerializeField] private float targetNear = 0;
+    [SerializeField] private float targetFar = 25;
     [SerializeField] private float targetGain = 15;
     [SerializeField] private bool useLowpass = true;
 

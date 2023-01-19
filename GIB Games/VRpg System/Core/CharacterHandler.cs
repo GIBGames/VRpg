@@ -20,6 +20,10 @@ namespace GIB.VRpg
         public LarpMenu _LarpMenu;
         [Tooltip("VRpg Log Component.")]
         public LarpLog _LarpLog;
+        [Tooltip("World Render Settings")]
+        public WorldRenderSettings _WorldRender;
+
+        //Referneces to title in menu
         [SerializeField] private Text demoName;
         [SerializeField] private Text demoTitle;
 
@@ -51,8 +55,6 @@ namespace GIB.VRpg
 
 
         #region Object Pool
-
-
         void Start()
         {
             DisableInteractive = true;
