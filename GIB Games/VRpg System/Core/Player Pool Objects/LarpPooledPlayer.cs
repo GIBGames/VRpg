@@ -49,7 +49,6 @@ namespace GIB.VRpg
         public int prevPlayerId;
         private bool prevStreaming;
 
-
         #region aliases
 
         public CharacterHandler GetCharacterHandler()

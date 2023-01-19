@@ -130,8 +130,14 @@ namespace GIB.VRpg
         #region Label and icon control
         // Basic label settings
         public void HideMyLabel()=>UpdateCharacterLabel(" ", " ");
-        public void OOCLabel()=>UpdateCharacterLabel("Out of Character", "<color=\"cyan\">" + Networking.LocalPlayer.displayName + "</color>");
-        public void STLabel()=>UpdateCharacterLabel(Networking.LocalPlayer.displayName, "<color=\"orange\">Storyteller</color>");
+        public void OOCLabel()=>UpdateCharacterLabel("<color=\"cyan\">Out of Character</color>", Networking.LocalPlayer.displayName);
+        public void STLabel()
+        {
+            if(Networking.LocalPlayer.displayName == _StData.GameMasterName.ToLower())
+                UpdateCharacterLabel($"<color=\"red\">{_StData.GameMasterTitle}</color>", Networking.LocalPlayer.displayName);
+            else
+                UpdateCharacterLabel($"<color=\"orange\">{_StData.GameStaffTitle}</color>", Networking.LocalPlayer.displayName);
+        }
 
         // Hide or show map icons
         public void HideIcon()=>LocalPoolObject.SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "HideIcon");

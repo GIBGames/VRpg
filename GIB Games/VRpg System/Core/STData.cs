@@ -16,6 +16,13 @@ namespace GIB.VRpg
         public GameObject[] STObjects;
         public VRC_Pickup[] NpcPickups;
 
+        [Header("Titles")]
+        public string GameMasterTitle;
+        public string GameMasterAbv;
+        public string GameMasterName;
+        public string GameStaffTitle;
+        public string GameStaffAbv;
+
         [Header("Current ST Data")]
         private VRCPlayerApi currentST;
         [SerializeField] private string[] STWhitelist;
@@ -30,6 +37,7 @@ namespace GIB.VRpg
         [Header("Player Box")]
         [SerializeField] private GameObject playerButtonParent;
         [SerializeField] private STPlayerButton[] playerButtons;
+        [SerializeField] private Text playerCountText;
 
         [Header("Cell Phone")]
         public LarpPooledPlayer selectedPlayer;
@@ -45,7 +53,7 @@ namespace GIB.VRpg
 
         public override void OnPlayerJoined(VRCPlayerApi player)
         {
-            if (player == Networking.LocalPlayer && (player.isMaster || OnStorytellerList(player.displayName.ToLower()) || player.displayName.ToLower() == "dorktoast"))
+            if (player == Networking.LocalPlayer && (player.isMaster || OnStorytellerList(player.displayName.ToLower()) || player.displayName.ToLower() == GameMasterName))
             {
                 BecomeCurrentST();
             }
@@ -71,6 +79,17 @@ namespace GIB.VRpg
         public void SyncCurrentST()
         {
             SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "UpdateCurrentST");
+        }
+
+        public void SetAsST()
+        {
+            Networking.SetOwner(selectedPlayer.Owner, gameObject);
+            SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.Owner, "DoStoryteller");
+        }
+
+        public void SetRemoteST()
+        {
+
         }
 
         public void DoStoryteller()
@@ -105,51 +124,20 @@ namespace GIB.VRpg
         {
             foreach (STPlayerButton stButton in playerButtons)
             {
-                stButton.NoCharacter();
+                stButton.gameObject.SetActive(false);
             }
 
             Component[] poolList = characterHandler.ObjectPool._GetActivePoolObjects();
 
             for (int i = 0; i < poolList.Length; i++)
             {
+                playerButtons[i].gameObject.SetActive(true);
                 LarpPooledPlayer playerItem = (LarpPooledPlayer)poolList[i];
                 STPlayerButton buttonItem = playerButtons[i];
 
                 buttonItem.AssignCharacter(playerItem);
             }
-        }
-
-        private void ShowPlayerButtonPage(int pageNumber)
-        {
-            foreach (STPlayerButton s in playerButtons)
-            {
-                s.gameObject.SetActive(false);
-            }
-
-            for (int i = 20 * (pageNumber - 1); i < 20 * pageNumber; i++)
-            {
-                playerButtons[i].gameObject.SetActive(true);
-            }
-        }
-
-        public void PlayerPage1()
-        {
-            ShowPlayerButtonPage(1);
-        }
-
-        public void PlayerPage2()
-        {
-            ShowPlayerButtonPage(2);
-        }
-
-        public void PlayerPage3()
-        {
-            ShowPlayerButtonPage(3);
-        }
-
-        public void PlayerPage4()
-        {
-            ShowPlayerButtonPage(4);
+            playerCountText.text = poolList.Length.ToString();
         }
 
         #region ST Voice
