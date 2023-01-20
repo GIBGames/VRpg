@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.CharacterHandler, Assembly-CSharp
+      Data: GIB.VRpg.CharacterHandler, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -881,7 +881,7 @@ MonoBehaviour:
       Data: 53|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.STPlayerButton[], Assembly-CSharp
+      Data: GIB.VRpg.STPlayerButton[], VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -1001,7 +1001,7 @@ MonoBehaviour:
       Data: 61|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.LarpPooledPlayer, Assembly-CSharp
+      Data: GIB.VRpg.LarpPooledPlayer, VRpg
     - Name: 
       Entry: 8
       Data: 

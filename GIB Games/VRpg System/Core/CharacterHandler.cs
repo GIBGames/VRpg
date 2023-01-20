@@ -133,7 +133,7 @@ namespace GIB.VRpg
         public void OOCLabel()=>UpdateCharacterLabel("<color=\"cyan\">Out of Character</color>", Networking.LocalPlayer.displayName);
         public void STLabel()
         {
-            if(Networking.LocalPlayer.displayName == _StData.GameMasterName.ToLower())
+            if(Networking.LocalPlayer.displayName.ToLower() == _StData.GameMasterName.ToLower())
                 UpdateCharacterLabel($"<color=\"red\">{_StData.GameMasterTitle}</color>", Networking.LocalPlayer.displayName);
             else
                 UpdateCharacterLabel($"<color=\"orange\">{_StData.GameStaffTitle}</color>", Networking.LocalPlayer.displayName);

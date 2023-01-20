@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.STData, Assembly-CSharp
+      Data: GIB.VRpg.STData, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -131,7 +131,7 @@ MonoBehaviour:
       Data: 8|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.LarpMenu, Assembly-CSharp
+      Data: GIB.VRpg.LarpMenu, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -194,7 +194,7 @@ MonoBehaviour:
       Data: 12|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.LarpLog, Assembly-CSharp
+      Data: GIB.VRpg.LarpLog, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -257,7 +257,7 @@ MonoBehaviour:
       Data: 16|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: WorldRenderSettings, Assembly-CSharp
+      Data: WorldRenderSettings, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -434,7 +434,7 @@ MonoBehaviour:
       Data: 27|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.VoiceZoneController, Assembly-CSharp
+      Data: GIB.VRpg.VoiceZoneController, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -497,7 +497,7 @@ MonoBehaviour:
       Data: 31|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.PatronData, Assembly-CSharp
+      Data: GIB.VRpg.PatronData, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -725,7 +725,7 @@ MonoBehaviour:
       Data: 44|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: Cyan.PlayerObjectPool.CyanPlayerObjectAssigner, Assembly-CSharp
+      Data: Cyan.PlayerObjectPool.CyanPlayerObjectAssigner, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -788,7 +788,7 @@ MonoBehaviour:
       Data: 48|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.LarpPooledPlayer, Assembly-CSharp
+      Data: GIB.VRpg.LarpPooledPlayer, VRpg
     - Name: 
       Entry: 8
       Data: 
