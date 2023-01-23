@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: Cyan.PlayerObjectPool.CyanPlayerObjectAssigner, VRpg
+      Data: Cyan.PlayerObjectPool.CyanPlayerObjectAssigner, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -122,7 +122,7 @@ MonoBehaviour:
       Data: 7|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.LarpPooledPlayer, VRpg
+      Data: GIB.VRpg.LarpPooledPlayer, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
