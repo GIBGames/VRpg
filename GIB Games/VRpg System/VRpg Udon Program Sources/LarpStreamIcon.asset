@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: LarpStreamIcon
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: b36cf4557eb8cb1448b8112d80c1cdde,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 5f5d07e520390a24e941a24d426cb0d2,
     type: 2}
   udonAssembly: 
   assemblyError: 
@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.CharacterHandler, VRpg
+      Data: GIB.VRpg.CharacterHandler, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

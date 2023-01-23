@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: STData Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: a0000cf2201c2234bb216b10faedf60a,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: f55d5bc8e159f9b42a3c5d4274cebcf1,
     type: 2}
   udonAssembly: 
   assemblyError: 
@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.CharacterHandler, VRpg
+      Data: GIB.VRpg.CharacterHandler, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -881,7 +881,7 @@ MonoBehaviour:
       Data: 53|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.STPlayerButton[], VRpg
+      Data: GIB.VRpg.STPlayerButton[], Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -1001,7 +1001,7 @@ MonoBehaviour:
       Data: 61|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.LarpPooledPlayer, VRpg
+      Data: GIB.VRpg.LarpPooledPlayer, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

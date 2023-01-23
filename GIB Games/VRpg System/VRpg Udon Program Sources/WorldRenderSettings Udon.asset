@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: WorldRenderSettings Udon
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 3d2499a2e9936604498db11b70de4bca,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 2942a7f678d5b324ebc0be44bac00d8a,
     type: 2}
   udonAssembly: 
   assemblyError: 
