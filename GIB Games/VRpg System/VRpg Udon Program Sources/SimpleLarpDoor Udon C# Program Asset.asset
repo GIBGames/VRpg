@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: SimpleLarpDoor Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 342358abcdf8c5c4c83fc42f22648677,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 4cca065226194f9468709d8a2f295b1c,
     type: 2}
   udonAssembly: 
   assemblyError: 

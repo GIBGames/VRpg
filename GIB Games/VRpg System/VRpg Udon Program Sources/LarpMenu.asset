@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: LarpMenu
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 16c6a3edcd93dd242bd8b34e89f8393c,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: eed64f78388c1e941985c9a711a41f14,
     type: 2}
   udonAssembly: 
   assemblyError: 
