@@ -1,0 +1,24 @@
+{
+    "name": "VRpg",
+    "references": [
+        "VRC.Udon",
+        "VRC.Udon.Editor",
+        "VRC.Udon.Serialization.OdinSerializer",
+        "UdonSharp.Runtime",
+        "UdonSharp.Editor",
+        "Unity.Postprocessing.Runtime",
+        "Unity.TextMeshPro",
+        "UdonToolkitRuntime",
+        "Cyan.PlayerObjectPool",
+        "Cyan.PlayerObjectPool.UdonSharp"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
