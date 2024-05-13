@@ -26,18 +26,20 @@ namespace GIB.VRpg
 		[Header("Logs")]
 		[SerializeField] private CanvasGroup ICLogGroup;
 		[SerializeField] private TextMeshProUGUI ICOutputBox;
-		//[SerializeField] private TMP_InputField ICOutputBox2;
 		[SerializeField] private InputField ICInputBox;
+        [Space]
 		[SerializeField] private CanvasGroup OOCLogGroup;
 		[SerializeField] private TextMeshProUGUI OOCOutputBox;
 		[SerializeField] private InputField OOCInputBox;
+		[Space]
 		[SerializeField] private CanvasGroup GMLogGroup;
 		[SerializeField] private TextMeshProUGUI GMOutputBox;
 		[SerializeField] private InputField GMInputBox;
 
+        [Header("Synced Variables")]
 		[UdonSynced] public string NewDebugText;
 		[UdonSynced] public string NewLogText;
-		[UdonSynced] public LogType syncedLogType;
+		[UdonSynced] public int SyncedLogType;
 
 		public void DebugLog(string message, GameObject go)
         {
@@ -54,16 +56,15 @@ namespace GIB.VRpg
 
 		public void DoNetworkDebug()
         {
-			//Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]//SYNC", VRpg.LabelColor) + ": " + NewDebugText);
+			Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]//SYNC", VRpg.LabelColor) + ": " + NewDebugText);
         }
 
 		public void SendLog(string message, LogType logType)
         {
-			Networking.SetOwner(Networking.LocalPlayer, gameObject);
 			string newLogText = message;
-			syncedLogType = logType;
+			SyncedLogType = (int)logType;
 
-			if (syncedLogType == LogType.IC)
+			if (SyncedLogType == (int)LogType.IC)
 			{
 				NewLogText = $"\n{VRpg.Character.CharacterName}: {newLogText}";
 			}
@@ -74,48 +75,89 @@ namespace GIB.VRpg
 
 			RequestSerialization();
 			SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLog");
+			
 		}
 
-		public void SendLogIC() => SendLog(ICInputBox.text, LogType.IC);
-		public void SendLogOOC() => SendLog(OOCInputBox.text, LogType.OOC);
-		public void SendLogGM() => SendLog(GMInputBox.text, LogType.GM);
+		public void SendLogLocal(string message, LogType logType)
+		{
+			switch (logType)
+			{
+				case LogType.IC:
+					ICOutputBox.text += message;
+					break;
+				case LogType.OOC:
+					OOCOutputBox.text += message;
+					break;
+				case LogType.GM:
+					GMOutputBox.text += message;
+					break;
+				case LogType.Debug:
+					//Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]", VRpg.LabelColor) + ": " + NewLogText);
+					break;
+			}
+		}
+
+		public void SendLogIC()
+		{
+			Networking.SetOwner(Networking.LocalPlayer, gameObject);
+			SendLog(ICInputBox.text, LogType.IC);
+		}
+		public void SendLogOOC()
+        {
+				Networking.SetOwner(Networking.LocalPlayer, gameObject);
+				SendLog(OOCInputBox.text, LogType.OOC);
+		}
+		public void SendLogGM()
+        {
+			Networking.SetOwner(Networking.LocalPlayer, gameObject);
+			SendLog(GMInputBox.text, LogType.GM);
+		}
 
 		public void ShowICLog()
         {
 			ICLogGroup.alpha = 1;
+			ICLogGroup.blocksRaycasts = true;
 			OOCLogGroup.alpha = 0;
+			OOCLogGroup.blocksRaycasts = false;
 			GMLogGroup.alpha = 0;
+			GMLogGroup.blocksRaycasts = false;
 		}
 
 		public void ShowOOCLog()
 		{
 			ICLogGroup.alpha = 0;
+			ICLogGroup.blocksRaycasts = false;
 			OOCLogGroup.alpha = 1;
+			OOCLogGroup.blocksRaycasts = true;
 			GMLogGroup.alpha = 0;
+			GMLogGroup.blocksRaycasts = false;
 		}
 
 		public void ShowGMLog()
 		{
 			ICLogGroup.alpha = 0;
+			ICLogGroup.blocksRaycasts = false;
 			OOCLogGroup.alpha = 0;
+			OOCLogGroup.blocksRaycasts = false;
 			GMLogGroup.alpha = 1;
+			GMLogGroup.blocksRaycasts = true;
 		}
 
 
 		public void Sync_SendLog()
         {
-            switch (syncedLogType)
+            switch (SyncedLogType)
             {
-                case LogType.IC:
-					ICInputBox.text += NewLogText;
+                case 0:
+					ICOutputBox.text += NewLogText;
 					break;
-                case LogType.OOC:
-					OOCInputBox.text += NewLogText;
+                case 1:
+					OOCOutputBox.text += NewLogText;
 					break;
-                case LogType.GM:
-					GMInputBox.text += NewLogText;
+                case 2:
+					GMOutputBox.text += NewLogText;
 					break;
-                case LogType.Debug:
+                default:
 					//Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]", VRpg.LabelColor) + ": " + NewLogText);
 					break;
             }
