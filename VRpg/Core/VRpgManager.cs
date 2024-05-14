@@ -55,8 +55,8 @@ namespace GIB.VRpg
 		public Color LabelColor = Color.yellow;
 		public Color OocLabelColor = Color.cyan;
 
-		#region Static Methods
-		public static DataDictionary JsonToDictionary(string input)
+        #region Static Methods
+        public static DataDictionary JsonToDictionary(string input)
 		{
 			if (VRCJson.TryDeserializeFromJson(input, out DataToken json))
 			{

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2624207553154983787}
   - component: {fileID: 783819449995370265}
   - component: {fileID: 8171189446630841530}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 9023029993892398007}
   - component: {fileID: 7903452729433586832}
   - component: {fileID: 2923359541556087261}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 7816166686277160026}
   - component: {fileID: 3639587339429780158}
   - component: {fileID: 8626981963485382866}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 6233302414681357658}
   - component: {fileID: 2508314093692992949}
   - component: {fileID: 3814467856296746468}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2777582881428157995}
   - component: {fileID: 3072144053647262646}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Icons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 760876559300726861}
   - component: {fileID: 3744480882774494771}
   - component: {fileID: 7284184775311618914}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Title Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,8 +845,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -944,7 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2202615380586291012}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Images
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4219499526587111505}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1150,7 +1150,7 @@ GameObject:
   - component: {fileID: 1154806223544387673}
   - component: {fileID: 7857769223321520324}
   - component: {fileID: 6206403459307527501}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Nameplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,8 +1232,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1335,7 +1335,7 @@ GameObject:
   - component: {fileID: 3140746689110623773}
   - component: {fileID: 5623825191184499776}
   - component: {fileID: 1521394462063752227}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Tags
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,8 +1417,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1516,7 +1516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6752328754060164421}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Labels
   m_TagString: Untagged
   m_Icon: {fileID: 0}

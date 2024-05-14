@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon;
+using TMPro;
 
 namespace GIB.VRpg
 {
@@ -13,6 +14,7 @@ namespace GIB.VRpg
         [Header("References")]
         [SerializeField] private InputField nameField;
         [SerializeField] private InputField titleField;
+
 
         public void SetNameAndTitle()
         {
