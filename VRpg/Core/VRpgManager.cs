@@ -92,10 +92,15 @@ namespace GIB.VRpg
 		
 		#region Public Methods
 		
+		public void HandlerLog(string message)
+        {
+			Logger.DebugLog(message, gameObject);
+        }
+
 		#endregion
-		
+
 		#region Private Methods
-		
+
 		#endregion
 	}
 }

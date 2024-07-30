@@ -19,6 +19,8 @@ namespace GIB.VRpg
 	public class VRpgMenuCaller : VRpgComponent
 	{
 		[SerializeField] private CallerPosition callerPosition;
+
+		[SerializeField] private Vector3 offset;
 		
 		private bool isVRPlayer;
 
@@ -46,6 +48,7 @@ namespace GIB.VRpg
 
 			VRCPlayerApi.TrackingData callerTrack = new VRCPlayerApi.TrackingData();
 
+			
 			switch (callerPosition)
             {
 				case CallerPosition.Head:
@@ -60,8 +63,9 @@ namespace GIB.VRpg
                 default:
                     break;
             }
+			Vector3 finalPosition = callerTrack.position + offset;
 
-			transform.SetPositionAndRotation(callerTrack.position, transform.rotation);
+			transform.SetPositionAndRotation(finalPosition, transform.rotation);
 		}
 
         public override void Interact()
