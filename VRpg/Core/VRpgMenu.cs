@@ -9,6 +9,8 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
+using TMPro;
+using UnityEngine.UI;
 
 namespace GIB.VRpg
 {
@@ -18,6 +20,10 @@ namespace GIB.VRpg
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class VRpgMenu : VRpgComponent
     {
+        [Header("References")]
+        [SerializeField] private InputField nameField;
+        [SerializeField] private InputField titleField;
+
         [Header("Panels")]
         [SerializeField] private GameObject[] panels;
 
@@ -25,12 +31,28 @@ namespace GIB.VRpg
         private Vector3 menuStartPosition;
         private Quaternion menuStartRotation;
 
+        [Header("Plates")]
+        [SerializeField] private TextMeshProUGUI characterNamePlate;
+        [SerializeField] private TextMeshProUGUI characterTitlePlate;
+        [SerializeField] private TextMeshProUGUI playerNamePlate;
+        [SerializeField] private TextMeshProUGUI playerTitlePlate;
+
         #region Unity/Udon
 
         private void Start()
         {
             menuStartPosition = transform.position;
             menuStartRotation = transform.rotation;
+        }
+
+        public override void OnPlayerJoined(VRCPlayerApi player)
+        {
+            if (!player.isLocal) return;
+
+            characterNamePlate.text = "";
+            characterTitlePlate.text = "";
+            playerNamePlate.text = player.displayName;
+            playerTitlePlate.text = "";
         }
 
         public void SwapMenuState()
@@ -67,6 +89,21 @@ namespace GIB.VRpg
             transform.SetPositionAndRotation(playerHeadPos, playerHeadRot);
 
             transform.position += transform.forward * .9f;
+        }
+
+        public void SetCharacterName(string charName)
+        {
+            characterNamePlate.text = charName;
+        }
+
+        public void SetCharacterTitle(string charTitle)
+        {
+            characterTitlePlate.text = charTitle;
+        }
+
+        public void SetPlayerTitle(string playerTitle)
+        {
+            playerTitlePlate.text = playerTitle;
         }
 
         #region panels

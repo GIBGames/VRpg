@@ -24,7 +24,6 @@ namespace GIB.VRpg
 	{
 		[Header("Game Info")]
 		public string GameName;
-		public Color LabelColor = Color.yellow;
 
 		[Header("VRPG Components")]
 		[Tooltip("Game Master data component.")]
@@ -48,13 +47,16 @@ namespace GIB.VRpg
 		[Tooltip("World Options")]
 		public VRpgOptions Options;
 
-
 		[Header("ObjectPool")]
 		public CyanPlayerObjectAssigner ObjectPool;
 		public PlayerPooledObject LocalPoolObject;
 
-		#region Static Methods
-		public static DataDictionary JsonToDictionary(string input)
+        [Header("Options")]
+		public Color LabelColor = Color.yellow;
+		public Color OocLabelColor = Color.cyan;
+
+        #region Static Methods
+        public static DataDictionary JsonToDictionary(string input)
 		{
 			if (VRCJson.TryDeserializeFromJson(input, out DataToken json))
 			{
@@ -78,27 +80,27 @@ namespace GIB.VRpg
 			else
 			{
 				// Failed to serialize for some reason, running ToString on the result should tell us why.
-				//VRpg.Logger.DebugLog("Failed to Serialize to Json. Result was:" + json.ToString(), gameObject);
+				// VRpg.Logger.DebugLog("Failed to Serialize to Json. Result was:" + json.ToString(), gameObject);
 				return string.Empty;
 			}
 		}
 		#endregion
 
 		#region Unity Methods
-
-		void Start()
-		{
-		
-		}
 		
 		#endregion
 		
 		#region Public Methods
 		
+		public void HandlerLog(string message)
+        {
+			Logger.DebugLog(message, gameObject);
+        }
+
 		#endregion
-		
+
 		#region Private Methods
-		
+
 		#endregion
 	}
 }

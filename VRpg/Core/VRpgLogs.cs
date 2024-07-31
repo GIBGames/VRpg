@@ -15,117 +15,196 @@ using UdonToolkit;
 
 namespace GIB.VRpg
 {
-	/// <summary>
-	/// Handles different types of logging interactions.
-	/// </summary>
-	[UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
-	[CustomName("VRPG Log Handler")]
-	public class VRpgLogs : VRpgComponent
-	{
-		// Log boxes here, later
-		[Header("Logs")]
-		[SerializeField] private CanvasGroup ICLogGroup;
-		[SerializeField] private TextMeshProUGUI ICOutputBox;
-		//[SerializeField] private TMP_InputField ICOutputBox2;
-		[SerializeField] private InputField ICInputBox;
-		[SerializeField] private CanvasGroup OOCLogGroup;
-		[SerializeField] private TextMeshProUGUI OOCOutputBox;
-		[SerializeField] private InputField OOCInputBox;
-		[SerializeField] private CanvasGroup GMLogGroup;
-		[SerializeField] private TextMeshProUGUI GMOutputBox;
-		[SerializeField] private InputField GMInputBox;
+    /// <summary>
+    /// Handles different types of logging interactions.
+    /// </summary>
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+    [CustomName("VRPG Log Handler")]
+    public class VRpgLogs : VRpgComponent
+    {
+        // Log boxes here, later
+        [Header("Logs")]
+        [SerializeField] private CanvasGroup ICLogGroup;
+        [SerializeField] private TextMeshProUGUI ICOutputBox;
+        [SerializeField] private InputField ICInputBox;
+        [Space]
+        [SerializeField] private CanvasGroup OOCLogGroup;
+        [SerializeField] private TextMeshProUGUI OOCOutputBox;
+        [SerializeField] private InputField OOCInputBox;
+        [Space]
+        [SerializeField] private CanvasGroup GMLogGroup;
+        [SerializeField] private TextMeshProUGUI GMOutputBox;
+        [SerializeField] private InputField GMInputBox;
 
-		[UdonSynced] public string NewDebugText;
-		[UdonSynced] public string NewLogText;
-		[UdonSynced] public LogType syncedLogType;
+        [Header("Synced Variables")]
+        [UdonSynced] public string NewDebugText;
+        [UdonSynced] public string NewLogText;
+        [UdonSynced] public int SyncedLogType;
 
-		public void DebugLog(string message, GameObject go)
+
+        private void Start()
         {
-			//Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]", VRpg.LabelColor) + ": " + message, go);
+            ShowOOCLog();
+        }
+        public void DebugLog(string message, GameObject go)
+        {
+            Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]", VRpg.LabelColor) + ": " + message, go);
         }
 
-		public void NetworkDebugLog(string message)
-		{
-			Networking.SetOwner(Networking.LocalPlayer, gameObject);
-			NewDebugText = message;
-			RequestSerialization();
-			SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "DoNetworkDebug");
-		}
-
-		public void DoNetworkDebug()
+        public void NetworkDebugLog(string message)
         {
-			//Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]//SYNC", VRpg.LabelColor) + ": " + NewDebugText);
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+            NewDebugText = message;
+            RequestSerialization();
+            SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "DoNetworkDebug");
         }
 
-		public void SendLog(string message, LogType logType)
+        public void DoNetworkDebug()
         {
-			Networking.SetOwner(Networking.LocalPlayer, gameObject);
-			string newLogText = message;
-			syncedLogType = logType;
+            Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]//SYNC", VRpg.LabelColor) + ": " + NewDebugText);
+        }
 
-			if (syncedLogType == LogType.IC)
-			{
-				NewLogText = $"\n{VRpg.Character.CharacterName}: {newLogText}";
-			}
-			else
-			{
-				NewLogText = $"\n{Networking.LocalPlayer.displayName}: {newLogText}";
-			}
-
-			RequestSerialization();
-			SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLog");
-		}
-
-		public void SendLogIC() => SendLog(ICInputBox.text, LogType.IC);
-		public void SendLogOOC() => SendLog(OOCInputBox.text, LogType.OOC);
-		public void SendLogGM() => SendLog(GMInputBox.text, LogType.GM);
-
-		public void ShowICLog()
+        public void SendLog(string message, LogType logType)
         {
-			ICLogGroup.alpha = 1;
-			OOCLogGroup.alpha = 0;
-			GMLogGroup.alpha = 0;
-		}
+            if(logType == LogType.Debug)
+            {
+                NetworkDebugLog(message);
+            }
 
-		public void ShowOOCLog()
-		{
-			ICLogGroup.alpha = 0;
-			OOCLogGroup.alpha = 1;
-			GMLogGroup.alpha = 0;
-		}
+            string newLogText = message;
+            SyncedLogType = (int)logType;
 
-		public void ShowGMLog()
-		{
-			ICLogGroup.alpha = 0;
-			OOCLogGroup.alpha = 0;
-			GMLogGroup.alpha = 1;
-		}
+            if (SyncedLogType == (int)LogType.IC)
+            {
+                NewLogText = $"\n{VRpg.Character.CharacterName}: {newLogText}";
+            }
+            else
+            {
+                NewLogText = $"\n{Networking.LocalPlayer.displayName}: {newLogText}";
+            }
 
+            RequestSerialization();
 
-		public void Sync_SendLog()
-        {
-            switch (syncedLogType)
+            switch (logType)
             {
                 case LogType.IC:
-					ICInputBox.text += NewLogText;
-					break;
+                    SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLogIC");
+                    break;
                 case LogType.OOC:
-					OOCInputBox.text += NewLogText;
-					break;
+                    SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLogOOC");
+                    break;
                 case LogType.GM:
-					GMInputBox.text += NewLogText;
-					break;
+                    SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLogGM");
+                    break;
                 case LogType.Debug:
-					//Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]", VRpg.LabelColor) + ": " + NewLogText);
-					break;
+                    NewDebugText = NewLogText;
+                    SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLogGM");
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        public void SendLogRaw(string message, LogType logType)
+        {
+            SyncedLogType = (int)logType;
+            NewLogText = $"\n{message}";
+
+            RequestSerialization();
+            SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLog");
+        }
+
+        public void SendLogLocal(string message, LogType logType)
+        {
+            switch (logType)
+            {
+                case LogType.IC:
+                    ICOutputBox.text += message;
+                    break;
+                case LogType.OOC:
+                    OOCOutputBox.text += message;
+                    break;
+                case LogType.GM:
+                    GMOutputBox.text += message;
+                    break;
+                case LogType.Debug:
+                    Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]", VRpg.LabelColor) + ": " + NewLogText);
+                    break;
             }
         }
-	}
-	public enum LogType
-	{
-		IC,
-		OOC,
-		GM,
-		Debug
-	}
+
+        public void SendLogIC()
+        {
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+            SendLog(ICInputBox.text, LogType.IC);
+        }
+        public void SendLogOOC()
+        {
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+            SendLog(OOCInputBox.text, LogType.OOC);
+        }
+        public void SendLogGM()
+        {
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+            SendLog(GMInputBox.text, LogType.GM);
+        }
+
+        public void ShowICLog()
+        {
+            ICLogGroup.alpha = 1;
+            ICLogGroup.blocksRaycasts = true;
+            OOCLogGroup.alpha = 0;
+            OOCLogGroup.blocksRaycasts = false;
+            GMLogGroup.alpha = 0;
+            GMLogGroup.blocksRaycasts = false;
+        }
+
+        public void ShowOOCLog()
+        {
+            ICLogGroup.alpha = 0;
+            ICLogGroup.blocksRaycasts = false;
+            OOCLogGroup.alpha = 1;
+            OOCLogGroup.blocksRaycasts = true;
+            GMLogGroup.alpha = 0;
+            GMLogGroup.blocksRaycasts = false;
+        }
+
+        public void ShowGMLog()
+        {
+            ICLogGroup.alpha = 0;
+            ICLogGroup.blocksRaycasts = false;
+            OOCLogGroup.alpha = 0;
+            OOCLogGroup.blocksRaycasts = false;
+            GMLogGroup.alpha = 1;
+            GMLogGroup.blocksRaycasts = true;
+        }
+
+
+        public void Sync_SendLogIC()
+        {
+            ICOutputBox.text += NewLogText;
+
+        }
+
+        public void Sync_SendLogOOC()
+        {
+            OOCOutputBox.text += NewLogText;
+
+        }
+
+        public void Sync_SendLogGM()
+        {
+
+            GMOutputBox.text += NewLogText;
+
+        }
+    }
+    public enum LogType
+    {
+        IC,
+        OOC,
+        GM,
+        Debug
+    }
 }

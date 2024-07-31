@@ -13,9 +13,7 @@ using UnityEngine.UI;
 
 namespace GIB.VRpg
 {
-	/// <summary>
-	/// Summary of Class
-	/// </summary>
+
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 	public class VRpgGMData : VRpgComponent
 	{
@@ -29,7 +27,7 @@ namespace GIB.VRpg
 		public string GameStaffTitle;
 		public string GameStaffAbv;
 
-		[Header("ST Data")]
+		[Header("GM Data")]
 		public VRCUrl targetUrl;
 		private VRCPlayerApi currentGMTemp;
 

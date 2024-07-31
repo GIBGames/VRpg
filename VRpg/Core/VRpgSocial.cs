@@ -18,8 +18,6 @@ namespace GIB.VRpg
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 	public class VRpgSocial : VRpgComponent      
 	{
-		//  Fields ===============
-
 		public PlayerPooledObject SelectedPlayer;
 
 		[SerializeField] private VRpgTextElement tagsLabel;

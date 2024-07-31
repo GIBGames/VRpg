@@ -172,9 +172,6 @@ namespace GIB.VRpg
                 }
             }
         }
-
-
-
         #endregion
 
         #region Map Icon
@@ -275,7 +272,6 @@ namespace GIB.VRpg
         }
 
         #endregion
-
 
         #region private methods
         private void InitializePlayerDictionary()
