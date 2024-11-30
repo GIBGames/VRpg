@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: Player Movement Modifier Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 4d1ea705e210b14449a9373b979912f0,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 90470d34efd4d2e4986c4b8db5530cff,
     type: 2}
   udonAssembly: 
   assemblyError: 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: CustomAttributeTest Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: aa9fb47135bf0e548931b6840bf74b48,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 6440fac67006dab43a52d276b00ae9a5,
     type: 2}
   udonAssembly: 
   assemblyError: 

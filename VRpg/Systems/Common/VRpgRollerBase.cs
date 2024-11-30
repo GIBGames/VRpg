@@ -14,7 +14,7 @@ namespace GIB.VRPG2
 
         public void SendResult(string message)
         {
-            VRPG.Logger.SendLog(message, gmToggle.isOn ? LogType.GM : LogType.OOC);
+            VRPG.Logger.SendLog(message, gmToggle.isOn ? VRPGLogType.GM : VRPGLogType.OOC);
         }
     }
 }

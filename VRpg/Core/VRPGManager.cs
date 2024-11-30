@@ -128,6 +128,19 @@ namespace GIB.VRPG2
 			}
         }
 
+		public void SetTags(string tags)
+		{
+
+		}
+
+		public void SetNameAndTitle(string nname, string ntitle)
+		{
+			if(Utilities.IsValid(LocalPlayerObject))
+			{
+				LocalPlayerObject.SetNameAndTitle(nname, ntitle);
+			}
+		}
+
         #endregion
 
         #region Private Methods

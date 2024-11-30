@@ -18,9 +18,8 @@ namespace GIB.VRPG2
 	/// Summary of Class
 	/// </summary>
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-	public class VRPGSocial : VRPGComponent      
+	public class VRPGSocial : VRPGComponent
 	{
-		aaa
 		public VRPGPlayerObject SelectedPlayer;
 
 		public VRCPlayerApi[] allPlayers;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: VRPGPersistentData
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 4a73046ba3b53454a9ddd8059cb8b53c,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 3b3a78e1b918fb24881c7c3a1a5337ee,
     type: 2}
   udonAssembly: 
   assemblyError: 

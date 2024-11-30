@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: Presentation Stream Controller Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: a61eee0e4c83ac148a2f03494d23bde5,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: be02c116a0249f046bee112a9c74405c,
     type: 2}
   udonAssembly: 
   assemblyError: 

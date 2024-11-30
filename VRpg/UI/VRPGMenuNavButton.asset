@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: VRPGMenuNavButton
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 2d17472d6b1213c439376a35a6eaea24,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: bfa78eb4638884640b72ec2c511ab178,
     type: 2}
   udonAssembly: 
   assemblyError: 

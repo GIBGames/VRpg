@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: Sound Occlusion Udon C# Program Asset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: d2006eb971966c04db024b2bbada654d,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: f73be378e9c8f2540971f37c324fae2a,
     type: 2}
   udonAssembly: 
   assemblyError: 

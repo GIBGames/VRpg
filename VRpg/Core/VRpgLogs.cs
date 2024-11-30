@@ -64,9 +64,14 @@ namespace GIB.VRPG2
             Debug.Log(Utils.MakeColor($"[{VRPG.GameName}]//SYNC", VRPG.LabelColor) + ": " + NewDebugText);
         }
 
-        public void SendLog(string message, LogType logType)
+        public void Log(string message)
         {
-            if(logType == LogType.Debug)
+            SendLog(message, VRPGLogType.OOC);
+        }
+
+        public void SendLog(string message, VRPGLogType logType)
+        {
+            if(logType == VRPGLogType.Debug)
             {
                 NetworkDebugLog(message);
             }
@@ -74,7 +79,7 @@ namespace GIB.VRPG2
             string newLogText = message;
             SyncedLogType = (int)logType;
 
-            if (SyncedLogType == (int)LogType.IC)
+            if (SyncedLogType == (int)VRPGLogType.IC)
             {
                 NewLogText = $"\n{VRPG.Character.CharacterName}: {newLogText}";
             }
@@ -87,16 +92,16 @@ namespace GIB.VRPG2
 
             switch (logType)
             {
-                case LogType.IC:
+                case VRPGLogType.IC:
                     SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLogIC");
                     break;
-                case LogType.OOC:
+                case VRPGLogType.OOC:
                     SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLogOOC");
                     break;
-                case LogType.GM:
+                case VRPGLogType.GM:
                     SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLogGM");
                     break;
-                case LogType.Debug:
+                case VRPGLogType.Debug:
                     NewDebugText = NewLogText;
                     SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLogGM");
                     break;
@@ -106,7 +111,7 @@ namespace GIB.VRPG2
 
         }
 
-        public void SendLogRaw(string message, LogType logType)
+        public void SendLogRaw(string message, VRPGLogType logType)
         {
             SyncedLogType = (int)logType;
             NewLogText = $"\n{message}";
@@ -115,20 +120,20 @@ namespace GIB.VRPG2
             SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "Sync_SendLog");
         }
 
-        public void SendLogLocal(string message, LogType logType)
+        public void SendLogLocal(string message, VRPGLogType logType)
         {
             switch (logType)
             {
-                case LogType.IC:
+                case VRPGLogType.IC:
                     ICOutputBox.text += message;
                     break;
-                case LogType.OOC:
+                case VRPGLogType.OOC:
                     OOCOutputBox.text += message;
                     break;
-                case LogType.GM:
+                case VRPGLogType.GM:
                     GMOutputBox.text += message;
                     break;
-                case LogType.Debug:
+                case VRPGLogType.Debug:
                     Debug.Log(Utils.MakeColor($"[{VRPG.GameName}]", VRPG.LabelColor) + ": " + NewLogText);
                     break;
             }
@@ -137,17 +142,17 @@ namespace GIB.VRPG2
         public void SendLogIC()
         {
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
-            SendLog(ICInputBox.text, LogType.IC);
+            SendLog(ICInputBox.text, VRPGLogType.IC);
         }
         public void SendLogOOC()
         {
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
-            SendLog(OOCInputBox.text, LogType.OOC);
+            SendLog(OOCInputBox.text, VRPGLogType.OOC);
         }
         public void SendLogGM()
         {
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
-            SendLog(GMInputBox.text, LogType.GM);
+            SendLog(GMInputBox.text, VRPGLogType.GM);
         }
 
         public void ShowICLog()
@@ -200,7 +205,7 @@ namespace GIB.VRPG2
 
         }
     }
-    public enum LogType
+    public enum VRPGLogType
     {
         IC,
         OOC,

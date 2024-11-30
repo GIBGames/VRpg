@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: VRPGVoiceZone
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 78c239717faca3449a8843b1ea7f4242,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 2b88f82fd4dcff7439e887ff56020510,
     type: 2}
   udonAssembly: 
   assemblyError: 

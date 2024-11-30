@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: DiceRoller5E
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: e6472e6e5da01a9418c7694b8f7fca09,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: dcefacf78a31b654a9711f948f9ea279,
     type: 2}
   udonAssembly: 
   assemblyError: 

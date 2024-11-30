@@ -375,6 +375,18 @@ namespace GIB.VRPG2
             return Networking.GetOwner(gameObject).displayName;
         }
 
+        public string GetPlayerName()
+        {
+            if(Utilities.IsValid(Owner) && PlayerData.TryGetString(Owner,"vrpg-charName", out string tempName))
+            {
+                return tempName;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
         public bool IsGM()
         {
             return VarsDict.GetBool("isGM") || VRPG.GMData.IsOnStaffList(Owner.displayName);

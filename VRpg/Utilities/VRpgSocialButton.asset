@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: VRPGSocialButton
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: c4e0b37cb735c4e47b6685e3cc2da7a6,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 64aa8e5fd552a5b44978bcfeb1d5e357,
     type: 2}
   udonAssembly: 
   assemblyError: 
