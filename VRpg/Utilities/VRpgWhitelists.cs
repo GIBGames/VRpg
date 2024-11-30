@@ -6,10 +6,10 @@ using VRC.SDK3.StringLoading;
 using VRC.Udon.Common.Interfaces;
 using VRC.SDKBase;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
 	[UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
-	public class VRpgWhitelists : VRpgComponent
+	public class VRPGWhitelists : VRPGComponent
 	{
 		private DataDictionary whitelists;
 
@@ -35,13 +35,13 @@ namespace GIB.VRpg
 
         public void DoUpdateWhitelists()
         {
-            VRpg.Logger.NetworkDebugLog("Whitelist Owner or Master is updating whitelists...");
+            VRPG.Logger.NetworkDebugLog("Whitelist Owner or Master is updating whitelists...");
             SendCustomNetworkEvent(NetworkEventTarget.All, "OnUpdateWhitelists");
         }
 
         public void OnUpdateWhitelists()
         {
-            VRpg.Logger.DebugLog("Whitelists updated.", gameObject);
+            VRPG.Logger.DebugLog("Whitelists updated.", gameObject);
             whitelists = Utils.JsonToDictionary(whitelistJson);
             InformSubscribers();
         }
@@ -59,7 +59,7 @@ namespace GIB.VRpg
 
         public override void OnStringLoadError(IVRCStringDownload result)
         {
-            VRpg.Logger.DebugLog("[VRpg Whitelists] " + result.Error, gameObject);
+            VRPG.Logger.DebugLog("[VRPG Whitelists] " + result.Error, gameObject);
         }
 
         public bool IsOnWhitelist(string listName,string userName)

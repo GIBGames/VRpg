@@ -6,9 +6,9 @@ using UnityEngine.UI;
 using TMPro;
 using VRC.SDK3.Data;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
-    public class DiceRoller5E : VRpgRollerBase
+    public class DiceRoller5E : VRPGRollerBase
     {
         //[SerializeField] private InputField modifierBox;
         [SerializeField] private TextMeshProUGUI dicePoolBoxText;

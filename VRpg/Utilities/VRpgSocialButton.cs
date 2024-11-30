@@ -1,6 +1,6 @@
 /**
- * VRpgSocialButton.cs by Toast https://github.com/dorktoast - 11/23/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGSocialButton.cs by Toast https://github.com/dorktoast - 11/23/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -10,13 +10,13 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
 	/// <summary>
 	/// Summary of Class
 	/// </summary>
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-	public class VRpgSocialButton : UdonSharpBehaviour
+	public class VRPGSocialButton : UdonSharpBehaviour
 	{
 		//  Fields ===============
 		

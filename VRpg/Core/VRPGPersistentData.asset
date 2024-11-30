@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: VRPGSocialButton
+  m_Name: VRPGPersistentData
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: c4e0b37cb735c4e47b6685e3cc2da7a6,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 4a73046ba3b53454a9ddd8059cb8b53c,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: fa3433086dd213f4189a15669cdd4c36, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 54407d1aa206d1e4886903a3315f915e, type: 3}
   scriptVersion: 2
   compiledVersion: 2
-  behaviourSyncMode: 1
+  behaviourSyncMode: 0
   hasInteractEvent: 0
-  scriptID: 6377970046923012893
+  scriptID: -8609038900943949945
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 

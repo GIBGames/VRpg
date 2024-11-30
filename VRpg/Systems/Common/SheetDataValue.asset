@@ -21,7 +21,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 1
   hasInteractEvent: 0
-  scriptID: 1576259973435488695
+  scriptID: 3742239554448527094
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.VRpgCharacter, VRpg
+      Data: GIB.VRPG2.VRPGCharacter, VRpg
     - Name: 
       Entry: 8
       Data: 

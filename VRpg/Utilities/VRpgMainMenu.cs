@@ -6,10 +6,10 @@ using VRC.SDKBase;
 using VRC.Udon;
 using TMPro;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
 
-    public class VRpgMainMenu : VRpgComponent
+    public class VRPGMainMenu : VRPGComponent
     {
         [Header("References")]
         [SerializeField] private InputField nameField;
@@ -18,18 +18,21 @@ namespace GIB.VRpg
 
         public void SetNameAndTitle()
         {
-            VRpg.LocalPoolObject.SetNameAndTitleNVC(nameField.text, titleField.text);
+            if(Utilities.IsValid(VRPG.LocalPlayerObject))
+                VRPG.LocalPlayerObject.SetNameAndTitle(nameField.text, titleField.text);
         }
 
         public void SetOOC()
         {
-            string oocColorHex = Utils.GetColorHex(VRpg.OocLabelColor);
-            VRpg.LocalPoolObject.SetNameAndTitleNVC($"<color=#{oocColorHex}>Out of Character</color>", Networking.LocalPlayer.displayName);
+            string oocColorHex = Utils.GetColorHex(VRPG.OocLabelColor);
+            if (Utilities.IsValid(VRPG.LocalPlayerObject))
+                VRPG.LocalPlayerObject.SetNameAndTitle($"<color=#{oocColorHex}>Out of Character</color>", Networking.LocalPlayer.displayName);
         }
 
         public void SetHidden()
         {
-            VRpg.LocalPoolObject.SetNameAndTitleNVC("", "");
+            if (Utilities.IsValid(VRPG.LocalPlayerObject))
+                VRPG.LocalPlayerObject.SetNameAndTitle("", "");
         }
     }
 }

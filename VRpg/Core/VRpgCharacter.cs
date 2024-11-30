@@ -1,4 +1,3 @@
-using Cyan.PlayerObjectPool;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -9,9 +8,9 @@ using UnityEngine.UI;
 using VRC.SDK3.StringLoading;
 using VRC.Udon.Common.Interfaces;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
-    public class VRpgCharacter : VRpgComponent
+    public class VRPGCharacter : VRPGComponent
     {
         public string CharacterName;
 
@@ -46,12 +45,13 @@ namespace GIB.VRpg
                 FetchButton.interactable = false;
             PlayerCharOptions = new DataDictionary();
             GetCharacters();
-            charSheet.ClearSheet();
+            if(charSheet != null)
+                charSheet.ClearSheet();
         }
 
         public void GetCharacters()
         {
-            VRpg.Logger.DebugLog("Trying to fetch characters...",gameObject);
+            VRPG.Logger.DebugLog("Trying to fetch characters...",gameObject);
             VRCStringDownloader.LoadUrl(targetUrl, (IUdonEventReceiver)this);
         }
 
@@ -64,7 +64,7 @@ namespace GIB.VRpg
                 // Sanity Check
                 if (charList.TokenType != TokenType.DataList)
                 {
-                    VRpg.HandlerLog("Deserializing Character list failed; type was not DataList.");
+                    VRPG.HandlerLog("Deserializing Character list failed; type was not DataList.");
                     return;
                 }
 
@@ -84,7 +84,7 @@ namespace GIB.VRpg
                     if (characterDictionary.ContainsKey(thisId)) continue;
 
                     characterDictionary.Add(thisId, thisCharacterDict);
-                    VRpg.HandlerLog($"Successfully read character data for {thisName.String}");
+                    VRPG.HandlerLog($"Successfully read character data for {thisName.String}");
                 }
             }
 
@@ -98,14 +98,14 @@ namespace GIB.VRpg
 
             pleaseWaitText.SetActive(false);
             charSheet.gameObject.SetActive(true);
-            VRpg.HandlerLog("Successfully fetched characters!");
+            VRPG.HandlerLog("Successfully fetched characters!");
             FetchButton.interactable = true;
         }
 
         public override void OnStringLoadError(IVRCStringDownload result)
         {
-            VRpg.HandlerLog("CharacterData> " + result.Error);
-            FetchButton.interactable = true;
+            VRPG.HandlerLog("CharacterData> " + result.Error);
+            //FetchButton.interactable = true;
         }
         #endregion
 
@@ -130,7 +130,7 @@ namespace GIB.VRpg
                         return;
                     }
                     else
-                        VRpg.HandlerLog($"charVals was {thisName}, local player name was {localPlayerName}.");
+                        VRPG.HandlerLog($"charVals was {thisName}, local player name was {localPlayerName}.");
                     resultText.text = "No Permission!";
                     return;
                 }
@@ -171,7 +171,7 @@ namespace GIB.VRpg
         {
             if (VRCJson.TryDeserializeFromJson(input, out DataToken json))
             {
-                VRpg.HandlerLog("Successfully deserialized Character Sheet from json!");
+                VRPG.HandlerLog("Successfully deserialized Character Sheet from json!");
 
                 DataDictionary newDict = json.DataDictionary;
 
@@ -181,7 +181,7 @@ namespace GIB.VRpg
             }
             else
             {
-                VRpg.HandlerLog("Error Deserializing Character Sheet from json!");
+                VRPG.HandlerLog("Error Deserializing Character Sheet from json!");
                 return new DataDictionary();
             }
         }

@@ -1,6 +1,6 @@
 /**
- * VRpgUtils.cs by Toast https://github.com/dorktoast - 11/6/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGUtils.cs by Toast https://github.com/dorktoast - 11/6/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -9,10 +9,10 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDK3.Data;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
     /// <summary>
-    /// Static utilities for VRpg
+    /// Static utilities for VRPG
     /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public static class Utils
@@ -205,7 +205,7 @@ namespace GIB.VRpg
             }
             else
             {
-                Debug.Log($"[VRpg Utils] DataDictionary tried to get integer with key {key}, no value.");
+                Debug.Log($"[VRPG Utils] DataDictionary tried to get integer with key {key}, no value.");
                 return defaultValue;
             }
         }
@@ -220,7 +220,7 @@ namespace GIB.VRpg
             }
             else
             {
-                Debug.Log($"[VRpg Utils] DataDictionary tried to get integer with key {key}, no value.");
+                Debug.Log($"[VRPG Utils] DataDictionary tried to get integer with key {key}, no value.");
                 return defaultValue;
             }
         }
@@ -235,7 +235,7 @@ namespace GIB.VRpg
             }
             else
             {
-                Debug.Log($"[VRpg Utils] DataDictionary tried to get uint with key {key}, no value.");
+                Debug.Log($"[VRPG Utils] DataDictionary tried to get uint with key {key}, no value.");
                 return defaultValue;
             }
         }
@@ -250,7 +250,7 @@ namespace GIB.VRpg
             }
             else
             {
-                Debug.Log($"[VRpg Utils] DataDictionary tried to get uShort with key {key}, no value.");
+                Debug.Log($"[VRPG Utils] DataDictionary tried to get uShort with key {key}, no value.");
                 return defaultValue;
             }
         }
@@ -265,7 +265,7 @@ namespace GIB.VRpg
             }
             else
             {
-                Debug.Log($"[VRpg Utils] DataDictionary tried to get Float with key {key}, no value.");
+                Debug.Log($"[VRPG Utils] DataDictionary tried to get Float with key {key}, no value.");
                 return defaultValue;
             }
         }
@@ -279,7 +279,7 @@ namespace GIB.VRpg
             }
             else
             {
-                Debug.Log($"[VRpg Utils] DataDictionary tried to get Bool with key {key}, bad value.");
+                Debug.Log($"[VRPG Utils] DataDictionary tried to get Bool with key {key}, bad value.");
             }
             return defaultValue;
         }

@@ -1,26 +1,26 @@
 /**
- * VRpgPlayerButton.cs by Toast https://github.com/dorktoast - 11/23/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGPlayerButton.cs by Toast https://github.com/dorktoast - 11/23/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
 
-using Cyan.PlayerObjectPool;
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using VRC.SDKBase;
 using VRC.Udon;
-
-namespace GIB.VRpg
+using VRC.SDK3.Data;
+using VRC.SDK3.Persistence;
+namespace GIB.VRPG2
 {
-    public class VRpgPlayerButton : VRpgComponent
+    public class VRPGPlayerButton : VRPGComponent
     {
-        public PlayerPooledObject targetPlayer;
+        public VRPGPlayerObject targetPlayer;
 
         private Button thisButton;
-        private VRpgTextElement buttonLabel;
+        private VRPGTextElement buttonLabel;
 
         private void Start()
         {
@@ -32,7 +32,7 @@ namespace GIB.VRpg
             if (thisButton == null)
                 thisButton = GetComponent<Button>();
 
-            buttonLabel = GetComponentInChildren<VRpgTextElement>();
+            buttonLabel = GetComponentInChildren<VRPGTextElement>();
         }
 
         public void NoCharacter()
@@ -43,7 +43,7 @@ namespace GIB.VRpg
             thisButton.interactable = false;
         }
 
-        public void AssignCharacter(PlayerPooledObject target)
+        public void AssignCharacter(VRPGPlayerObject target)
         {
             if (!Utilities.IsValid(target.Owner))
             {
@@ -55,7 +55,7 @@ namespace GIB.VRpg
             targetPlayer = target;
 
             // Handle text
-            string charName = target.VarsDict.GetString("charName", "");
+            PlayerData.TryGetString(target.Owner,"vrpg-charName", out string charName);
             bool isGM = target.VarsDict.GetBool("isGM", false);
 
             buttonLabel.SetText(GenerateButtonContent(target.Owner.displayName, charName, isGM));
@@ -69,15 +69,15 @@ namespace GIB.VRpg
         {
             if (targetPlayer == null || !Utilities.IsValid(targetPlayer.Owner)) return;
 
-            VRpg.LocalPoolObject.SetSelectedNVC(targetPlayer.Owner);
-            VRpg.Social.SetSelectedPlayer(targetPlayer);
+            VRPG.LocalPlayerObject.SetSelected(targetPlayer.Owner);
+            VRPG.Social.SetSelectedPlayer(targetPlayer);
         }
 
         public string GenerateButtonContent(string playerName, string characterName, bool isST = false)
         {
             // Set initial player label based on ST/narrator status
             string playerLabel;
-            VRpgGMData gmData = VRpg.GMData;
+            VRPGGameMasterData gmData = VRPG.GMData;
 
             if (playerName.ToLower() == gmData.GameMasterName.ToLower())
                 playerLabel = $"<b>{playerName}</b> [<color=\"red\">{gmData.GameMasterAbv}</color>]";

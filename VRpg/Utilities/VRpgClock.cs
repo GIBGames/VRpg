@@ -1,6 +1,6 @@
 /**
- * VRpgClock.cs by Toast https://github.com/dorktoast - 11/16/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGClock.cs by Toast https://github.com/dorktoast - 11/16/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -12,10 +12,10 @@ using VRC.Udon;
 using TMPro;
 using System;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-	public class VRpgClock : UdonSharpBehaviour
+	public class VRPGClock : UdonSharpBehaviour
 	{
 		public byte clockTick;
 

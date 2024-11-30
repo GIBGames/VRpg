@@ -1,6 +1,6 @@
 /**
- * VRpgLogs.cs by Toast https://github.com/dorktoast - 11/6/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGLogs.cs by Toast https://github.com/dorktoast - 11/6/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -13,14 +13,14 @@ using VRC.Udon;
 using TMPro;
 using UdonToolkit;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
     /// <summary>
     /// Handles different types of logging interactions.
     /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     [CustomName("VRPG Log Handler")]
-    public class VRpgLogs : VRpgComponent
+    public class VRPGLogs : VRPGComponent
     {
         // Log boxes here, later
         [Header("Logs")]
@@ -48,7 +48,7 @@ namespace GIB.VRpg
         }
         public void DebugLog(string message, GameObject go)
         {
-            Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]", VRpg.LabelColor) + ": " + message, go);
+            Debug.Log(Utils.MakeColor($"[{VRPG.GameName}]", VRPG.LabelColor) + ": " + message, go);
         }
 
         public void NetworkDebugLog(string message)
@@ -61,7 +61,7 @@ namespace GIB.VRpg
 
         public void DoNetworkDebug()
         {
-            Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]//SYNC", VRpg.LabelColor) + ": " + NewDebugText);
+            Debug.Log(Utils.MakeColor($"[{VRPG.GameName}]//SYNC", VRPG.LabelColor) + ": " + NewDebugText);
         }
 
         public void SendLog(string message, LogType logType)
@@ -76,7 +76,7 @@ namespace GIB.VRpg
 
             if (SyncedLogType == (int)LogType.IC)
             {
-                NewLogText = $"\n{VRpg.Character.CharacterName}: {newLogText}";
+                NewLogText = $"\n{VRPG.Character.CharacterName}: {newLogText}";
             }
             else
             {
@@ -129,7 +129,7 @@ namespace GIB.VRpg
                     GMOutputBox.text += message;
                     break;
                 case LogType.Debug:
-                    Debug.Log(Utils.MakeColor($"[{VRpg.GameName}]", VRpg.LabelColor) + ": " + NewLogText);
+                    Debug.Log(Utils.MakeColor($"[{VRPG.GameName}]", VRPG.LabelColor) + ": " + NewLogText);
                     break;
             }
         }

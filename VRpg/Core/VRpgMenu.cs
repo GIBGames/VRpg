@@ -1,6 +1,6 @@
 /**
- * VRpgLocalMenu.cs by Toast https://github.com/dorktoast - 11/12/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGLocalMenu.cs by Toast https://github.com/dorktoast - 11/12/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -12,13 +12,13 @@ using VRC.Udon;
 using TMPro;
 using UnityEngine.UI;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
     /// <summary>
-    /// A handler for management of the VRpg Menu
+    /// A handler for management of the VRPG Menu
     /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class VRpgMenu : VRpgComponent
+    public class VRPGMenu : VRPGComponent
     {
         [Header("References")]
         [SerializeField] private InputField nameField;

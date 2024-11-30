@@ -6,15 +6,15 @@ using VRC.Udon;
 using UnityEngine.UI;
 using TMPro;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
-    public class VRpgRollerBase : VRpgComponent
+    public class VRPGRollerBase : VRPGComponent
     {
         [SerializeField] private Toggle gmToggle;
 
         public void SendResult(string message)
         {
-            VRpg.Logger.SendLog(message, gmToggle.isOn ? LogType.GM : LogType.OOC);
+            VRPG.Logger.SendLog(message, gmToggle.isOn ? LogType.GM : LogType.OOC);
         }
     }
 }

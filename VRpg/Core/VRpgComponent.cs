@@ -1,6 +1,6 @@
 /**
- * VRpgComponent.cs by Toast https://github.com/dorktoast - 11/6/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGComponent.cs by Toast https://github.com/dorktoast - 11/6/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -10,15 +10,15 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
 	/// <summary>
 	/// Summary of Class
 	/// </summary>
-	public class VRpgComponent : UdonSharpBehaviour
+	public class VRPGComponent : UdonSharpBehaviour
 	{
-        private VRpgManager vrpgManager;
-        public VRpgManager VRpg
+        private VRPGManager vrpgManager;
+        public VRPGManager VRPG
         {
             get
             {
@@ -31,7 +31,7 @@ namespace GIB.VRpg
 
         public virtual void CacheManager()
         {
-            vrpgManager = GameObject.Find("VRpg Manager").GetComponent<VRpgManager>();
+            vrpgManager = GameObject.Find("VRPG Manager").GetComponent<VRPGManager>();
         }
 	}
 }

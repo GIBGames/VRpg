@@ -170,7 +170,7 @@ MonoBehaviour:
       Data: 9|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.SheetDataValue[], VRpg
+      Data: GIB.VRPG2.SheetDataValue[], VRpg
     - Name: 
       Entry: 8
       Data: 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: VRpgTextElement
+  m_Name: VRPGTextElement
   m_EditorClassIdentifier: 
   serializedUdonProgramAsset: {fileID: 11400000, guid: efe4e531fee87be4d847219bfac17efa,
     type: 2}
@@ -21,7 +21,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 1
   hasInteractEvent: 0
-  scriptID: 1664347200975619049
+  scriptID: 4997260720661395629
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.VRpgManager, VRpg
+      Data: GIB.VRPG2.VRPGManager, VRpg
     - Name: 
       Entry: 8
       Data: 

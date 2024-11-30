@@ -8,12 +8,12 @@ using VRC.SDK3.StringLoading;
 using VRC.Udon.Common.Interfaces;
 using VRC.SDK3.Data;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class SheetDataValue : UdonSharpBehaviour
     {
-        [HideInInspector] public VRpgCharacter CharacterData;
+        [HideInInspector] public VRPGCharacter CharacterData;
         public string TargetKey;
         private Text targetText;
 
@@ -88,7 +88,7 @@ namespace GIB.VRpg
         {
             if (CharacterData == null)
             {
-                CharacterData = GameObject.Find("VRPG Character Data").GetComponent<VRpgCharacter>();
+                CharacterData = GameObject.Find("VRPG Character Data").GetComponent<VRPGCharacter>();
             }
             return CharacterData.CurrentCharacter;
         }

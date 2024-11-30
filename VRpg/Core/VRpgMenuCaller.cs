@@ -1,6 +1,6 @@
 /**
- * VRpgMenuCaller.cs by Toast https://github.com/dorktoast - 11/16/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGMenuCaller.cs by Toast https://github.com/dorktoast - 11/16/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -10,13 +10,13 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
 	/// <summary>
-	/// Object that calls the VRpg Menu to the player.
+	/// Object that calls the VRPG Menu to the player.
 	/// </summary>
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-	public class VRpgMenuCaller : VRpgComponent
+	public class VRPGMenuCaller : VRPGComponent
 	{
 		[SerializeField] private CallerPosition callerPosition;
 
@@ -70,7 +70,7 @@ namespace GIB.VRpg
 
         public override void Interact()
         {
-			VRpg.Menu.SwapMenuState();
+			VRPG.Menu.SwapMenuState();
         }
 
         #endregion

@@ -1,6 +1,6 @@
 /**
- * VRpgSocial.cs by Toast https://github.com/dorktoast - 11/23/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGSocial.cs by Toast https://github.com/dorktoast - 11/23/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -9,30 +9,34 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
+using VRC.SDK3.Data;
+using VRC.SDK3.Persistence;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
 	/// <summary>
 	/// Summary of Class
 	/// </summary>
 	[UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-	public class VRpgSocial : VRpgComponent      
+	public class VRPGSocial : VRPGComponent      
 	{
-		public PlayerPooledObject SelectedPlayer;
+		public VRPGPlayerObject SelectedPlayer;
 
-		[SerializeField] private VRpgTextElement tagsLabel;
+		public VRCPlayerApi[] allPlayers;
 
-		[SerializeField] private VRpgTextElement playerLabel;
-		[SerializeField] private VRpgTextElement nameLabel;
-		[SerializeField] private VRpgTextElement titleLabel;
-		[SerializeField] private VRpgTextElement descLabel;
+		[SerializeField] private VRPGTextElement tagsLabel;
+
+		[SerializeField] private VRPGTextElement playerLabel;
+		[SerializeField] private VRPGTextElement nameLabel;
+		[SerializeField] private VRPGTextElement titleLabel;
+		[SerializeField] private VRPGTextElement descLabel;
 
 		[Header("Player Box")]
 		[SerializeField] private GameObject playerButtonParent;
-		[SerializeField] private VRpgTextElement playerCountText;
-		[SerializeField] private VRpgTextElement selectedPlayerName;
+		[SerializeField] private VRPGTextElement playerCountText;
+		[SerializeField] private VRPGTextElement selectedPlayerName;
 
-		private VRpgPlayerButton[] playerButtons;
+		private VRPGPlayerButton[] playerButtons;
 
 
 		//  Properties ===========
@@ -43,19 +47,19 @@ namespace GIB.VRpg
 
 		void Start()
 		{
-			playerButtons = playerButtonParent.GetComponentsInChildren<VRpgPlayerButton>();
+			playerButtons = playerButtonParent.GetComponentsInChildren<VRPGPlayerButton>();
 		}
 		
 		#endregion
 		
 		#region Public Methods
-		public void SetSelectedPlayer(PlayerPooledObject targetPlayer)
+		public void SetSelectedPlayer(VRPGPlayerObject targetPlayer)
 		{
 			if (!Utilities.IsValid(targetPlayer.Owner)) return;
 
-			string tempName = targetPlayer.VarsDict.GetString("charName", "");
-			string tempTitle = targetPlayer.VarsDict.GetString("charTitle", "");
-			string tempDesc = targetPlayer.VarsDict.GetString("charDesc", "");
+			PlayerData.TryGetString(targetPlayer.Owner,"vrpg-charName",out string tempName);
+            PlayerData.TryGetString(targetPlayer.Owner, "vrpg-charTitle", out string tempTitle);
+            PlayerData.TryGetString(targetPlayer.Owner, "vrpg-charDesc", out string tempDesc);
 
 			playerLabel.SetText(targetPlayer.Owner.displayName);
 			nameLabel.SetText(tempName);
@@ -73,25 +77,37 @@ namespace GIB.VRpg
 
 		public void UpdatePlayerList()
 		{
-			foreach (VRpgPlayerButton playerButton in playerButtons)
+			foreach (VRPGPlayerButton playerButton in playerButtons)
 			{
 				playerButton.gameObject.SetActive(false);
 			}
 
-			Component[] poolList = VRpg.ObjectPool._GetActivePoolObjects();
+			GetAllPlayers();
 
-			for (int i = 0; i < poolList.Length; i++)
+			for (int i = 0; i < allPlayers.Length; i++)
 			{
 				playerButtons[i].gameObject.SetActive(true);
-				PlayerPooledObject playerItem = (PlayerPooledObject)poolList[i];
-				VRpgPlayerButton buttonItem = playerButtons[i];
+				GameObject[] thisPlayerObjects = allPlayers[i].GetPlayerObjects();
+
+				if (!Utilities.IsValid(thisPlayerObjects[0])) continue;
+
+                VRPGPlayerObject playerItem = thisPlayerObjects[0].GetComponentInChildren<VRPGPlayerObject>();
+				VRPGPlayerButton buttonItem = playerButtons[i];
 
 				playerItem.SyncPoolObject();
 
 				buttonItem.AssignCharacter(playerItem);
 			}
-			playerCountText.SetText("Players: " + poolList.Length.ToString());
+			playerCountText.SetText("Players: " + allPlayers.Length.ToString());
 		}
+
+		public VRCPlayerApi[] GetAllPlayers()
+		{
+            allPlayers = new VRCPlayerApi[VRCPlayerApi.GetPlayerCount()];
+            allPlayers = VRCPlayerApi.GetPlayers(allPlayers);
+
+			return allPlayers;
+        }
 
 		#endregion
 

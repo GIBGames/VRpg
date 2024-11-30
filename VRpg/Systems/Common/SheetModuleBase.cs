@@ -3,7 +3,7 @@ using UdonToolkit;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
-using GIB.VRpg;
+using GIB.VRPG2;
 using UnityEngine.UI;
 using VRC.SDK3.StringLoading;
 using VRC.Udon.Common.Interfaces;

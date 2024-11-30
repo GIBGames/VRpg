@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: VRpgPlayerButton
+  m_Name: VRPGPlayerButton
   m_EditorClassIdentifier: 
   serializedUdonProgramAsset: {fileID: 11400000, guid: d65240f3efa35b948b6e3aa4ffeed3a0,
     type: 2}
@@ -21,7 +21,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 0
   hasInteractEvent: 0
-  scriptID: -5817706198436048074
+  scriptID: 2014498655619051755
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.VRpgManager, VRpg
+      Data: GIB.VRPG2.VRPGManager, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -122,7 +122,7 @@ MonoBehaviour:
       Data: 7|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.PlayerPooledObject, VRpg
+      Data: GIB.VRPG2.VRPGPlayerObject, VRpg
     - Name: 
       Entry: 8
       Data: 
@@ -230,7 +230,7 @@ MonoBehaviour:
       Data: 13|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: GIB.VRpg.VRpgTextElement, VRpg
+      Data: GIB.VRPG2.VRPGTextElement, VRpg
     - Name: 
       Entry: 8
       Data: 

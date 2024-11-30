@@ -1,6 +1,6 @@
 /**
- * VRpgTmpElement.cs by Toast https://github.com/dorktoast - 11/6/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGTmpElement.cs by Toast https://github.com/dorktoast - 11/6/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -13,13 +13,13 @@ using VRC.Udon;
 using UdonToolkit;
 using TMPro;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
     /// <summary>
     /// Interprets and displays text in different ways.
     /// </summary>
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class VRpgTextElement : VRpgComponent
+    public class VRPGTextElement : VRPGComponent
     {
         private TextMeshProUGUI elementTMP;
         private Text elementText;

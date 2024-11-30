@@ -1,6 +1,6 @@
 /**
- * VRpgPatronData.cs by Toast https://github.com/dorktoast - 11/6/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGPatronData.cs by Toast https://github.com/dorktoast - 11/6/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
@@ -14,12 +14,12 @@ using VRC.SDK3.StringLoading;
 using VRC.Udon.Common.Interfaces;
 using VRC.SDK3.Data;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     [CustomName("VRPG Patron Handler")]
     [HelpMessage("Patron Data must be formatted with each name separated by line breaks (\\n), and each tier separated by an @ symbol. for an example click the '?' button.")]
-    public class VRpgPatronData : VRpgComponent
+    public class VRPGPatronData : VRPGComponent
     {
         [SerializeField] private bool remotePatronData;
         [HideIf(nameof(DataIsLocal))]
@@ -32,7 +32,7 @@ namespace GIB.VRpg
         public Color[] TierColors;
 
         [Tooltip("Text Item to output the Patron Data to.")]
-        public VRpgTextElement PatronCredits;
+        public VRPGTextElement PatronCredits;
 
         private void Start()
         {
@@ -61,7 +61,7 @@ namespace GIB.VRpg
 
         public override void OnStringLoadError(IVRCStringDownload result)
         {
-            VRpg.Logger.DebugLog("[VRpg PatronData] " + result.Error,gameObject);
+            VRPG.Logger.DebugLog("[VRPG PatronData] " + result.Error,gameObject);
         }
 
         [Button("Populate")]

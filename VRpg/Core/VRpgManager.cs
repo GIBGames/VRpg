@@ -1,11 +1,10 @@
 /**
- * VRpgManager.cs by Toast https://github.com/dorktoast - 11/6/2023
- * VRpg Project Repo: https://github.com/GIBGames/VRpg
+ * VRPGManager.cs by Toast https://github.com/dorktoast - 11/6/2023
+ * VRPG Project Repo: https://github.com/GIBGames/VRPG
  * Join the GIB Games discord at https://discord.gg/gibgames
  * Licensed under MIT: https://opensource.org/license/mit/
  */
 
-using Cyan.PlayerObjectPool;
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,50 +12,54 @@ using VRC.SDKBase;
 using VRC.Udon;
 using UdonToolkit;
 using VRC.SDK3.Data;
+using VRC.SDK3.Persistence;
 
-namespace GIB.VRpg
+namespace GIB.VRPG2
 {
 	/// <summary>
-	/// The main listener and controller of the various parts of the VRpg System.
+	/// The main listener and controller of the various parts of the VRPG System.
 	/// </summary>
 	[CustomName("VRPG Manager")]
-	public class VRpgManager : UdonSharpBehaviour
+	public class VRPGManager : UdonSharpBehaviour
 	{
 		[Header("Game Info")]
 		public string GameName;
 
 		[Header("VRPG Components")]
 		[Tooltip("Game Master data component.")]
-		public VRpgGMData GMData;
+		public VRPGGameMasterData GMData;
 		[Tooltip("Menu Component.")]
-		public VRpgMenu Menu;
+		public VRPGMenu Menu;
 		[Tooltip("Log Component.")]
-		public VRpgLogs Logger;
-		//[Tooltip("Voice Zone Controller Component.")]
-		//public VRpgVoiceController VoiceController;
+		public VRPGLogs Logger;
+		[Tooltip("Voice Zone Controller Component.")]
+		public VRPGVoiceController VoiceController;
 		[Tooltip("VIP/Patron component")]
-		public VRpgPatronData PatronData;
+		public VRPGPatronData PatronData;
 		[Tooltip("Character component")]
-		public VRpgCharacter Character;
+		public VRPGCharacter Character;
 		[Tooltip("Social component")]
-		public VRpgSocial Social;
+		public VRPGSocial Social;
 		[Tooltip("Whitelist component")]
-		public VRpgWhitelists Whitelists;
+		public VRPGWhitelists Whitelists;
 		[Tooltip("Region component")]
-		public VRpgRegions Regions;
+		public VRPGRegions Regions;
 		[Tooltip("World Options")]
-		public VRpgOptions Options;
+		public VRPGOptions Options;
 
 		[Header("ObjectPool")]
-		public CyanPlayerObjectAssigner ObjectPool;
-		public PlayerPooledObject LocalPoolObject;
+        public VRPGPlayerObject LocalPlayerObject;
 
         [Header("Options")]
 		public Color LabelColor = Color.yellow;
 		public Color OocLabelColor = Color.cyan;
 
-        #region Static Methods
-        public static DataDictionary JsonToDictionary(string input)
+		#region Constants
+
+		#endregion
+
+		#region Static Methods
+		public static DataDictionary JsonToDictionary(string input)
 		{
 			if (VRCJson.TryDeserializeFromJson(input, out DataToken json))
 			{
@@ -80,7 +83,7 @@ namespace GIB.VRpg
 			else
 			{
 				// Failed to serialize for some reason, running ToString on the result should tell us why.
-				// VRpg.Logger.DebugLog("Failed to Serialize to Json. Result was:" + json.ToString(), gameObject);
+				// VRPG.Logger.DebugLog("Failed to Serialize to Json. Result was:" + json.ToString(), gameObject);
 				return string.Empty;
 			}
 		}
@@ -97,10 +100,47 @@ namespace GIB.VRpg
 			Logger.DebugLog(message, gameObject);
         }
 
-		#endregion
+		public void SetVoiceZone(int zone)
+		{
+			PlayerData.SetByte("vrpg-voiceZone", (byte)zone);
 
-		#region Private Methods
+			VoiceController.UpdateVoiceZones();
+		}
 
-		#endregion
-	}
+        public void AddVoiceChannel(int zone)
+        {
+            PlayerData.SetByte("vrpg-voiceZone", (byte)zone);
+
+            VoiceController.UpdateVoiceZones();
+        }
+
+        public void SavePlayerData()
+		{
+            var VarsString = Utils.DictionaryToJson(LocalPlayerObject.VarsDict);
+			PlayerData.SetString("VarsDict", VarsString);
+		}
+
+        public void LoadPlayerData()
+        {
+			if(LocalPlayerObject != null && PlayerData.TryGetString(Networking.LocalPlayer,"VarsDict",out string newVars))
+			{
+				LocalPlayerObject.DeSerializeVarsDict(newVars);
+			}
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        #endregion
+
+        // Test
+
+        public void SetSpeakChannel0() => LocalPlayerObject.SetSpeakChannel(0);
+        public void SetSpeakChannel1() => LocalPlayerObject.SetSpeakChannel(1);
+        public void SetSpeakChannel2() => LocalPlayerObject.SetSpeakChannel(2);
+        public void SetListenChannel0() => LocalPlayerObject.SetListenChannel(0);
+        public void SetListenChannel1() => LocalPlayerObject.SetListenChannel(1);
+        public void SetListenChannel2() => LocalPlayerObject.SetListenChannel(2);
+    }
 }
