@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FloorGridHex
+  m_Shader: {fileID: 4800000, guid: 4de24678a09fa0b409abe72ad5db7f9a, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 8e383558ac9cbaa48b5ae0f17f1cc922, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _FadeDistance: 10
+    - _GridThickness: 0.03
+    - _Scale: 1.06
+    - _ScaleX: 0.4
+    - _ScaleY: 0.45
+    - _TileScale: 1
+    - _Tiling: 0.9
+    m_Colors:
+    - _Color: {r: 1, g: 0.51257855, b: 0.51257855, a: 1}
+    - _GridColor: {r: 0.18867922, g: 0.0039658486, b: 0, a: 1}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
